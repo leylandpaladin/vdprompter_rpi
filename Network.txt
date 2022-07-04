@@ -1,0 +1,14 @@
+dhcp=1
+ip=192.168.0.100/24
+gw=192.168.0.1
+dns=192.168.0.1 8.8.8.8
+
+wifi=1
+
+ap_ssid=Prompter
+ap_pass=prompter
+
+cl_ssid=ShteinWiFi
+cl_pass=24121991
+
+all-redirect=0

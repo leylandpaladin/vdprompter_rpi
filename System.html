@@ -1,0 +1,316 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+
+body {
+	background:black;
+	font-family: Helvetica, Arial, Verdana;
+	font-size:30px;
+}
+
+h2{
+	color:#ffdf60;
+	font-size:50px;
+
+}
+
+a{
+	color: #FFF;
+	text-align: center;
+	text-decoration:none;
+	display: block;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#textentry  fieldset label {
+
+	color:#fff5cc;
+	font-weight:bold;
+	margin-left:20px;
+	display: inline-block;
+	min-width: 330px;
+	min-height: 40px;
+
+}
+
+label {
+
+	display:block;
+	padding: 15px;
+	text-align:left;
+	margin-left:25%;
+	
+}
+
+input {
+
+	font-size:30px;
+
+}
+
+#BackBut {
+	position:fixed;
+	Width:8%;
+	Height:5%;
+	border-radius:25px;
+	-webkit-border-radius:25px;
+	color: #FFF;
+	text-align: center;
+    font-size: 60px;
+	border-color: #FFF;
+    border: solid;
+	display:block;
+	Top:2%;
+	left:2%;
+	background:#888;
+}
+
+.But{
+	Width:50%;
+	Height:5%;
+	margin: 2% 2% 2% 30%;
+	border-radius:25px;
+	-webkit-border-radius:25px;
+	color: #FFF;
+	text-align: center;
+    font-size: 60px;
+	border-color: #FFF;
+    border: solid;
+	display:block;
+	Top:2%;
+	left:25%;
+	background-color: #396423;
+}
+
+.inBut{
+	position: absolute;
+	width:100%;
+	text-align: center;
+}
+
+.MainFrame{
+	margin: 1%;
+    color: #fff;
+    width: 98%;
+	display:block;
+	text-align:center;
+	border:solid;
+	border-color:#fff;
+	border-radius:20px;
+	-webkit-border-radius:20px;
+}
+
+.InputTextArea {
+	top: 2%;
+	width: 76%;
+	margin: 2% 2% 2% 6%;
+	height: 50%;
+	font-size: 16px;	
+	
+}
+
+.leftNum{
+	float: left;
+    margin-top: 20%;
+    margin-left: 10%;
+}
+</style>
+<title>Системные настройки</title>
+
+</head>
+<iframe id="ReverseFile" src="Reverse.txt" hidden="true"></iframe>
+<body>
+<div id="BackBut" onclick="javascript:location.href='http://'+window.location.host;">
+	<a href="javascript:void(0);" style="bottom:20%;font-size:40px;" class="inBut">
+		←
+	</a>
+</div>
+<div class="MainFrame" style="">
+<h2 style="">Настройки сети:</h2>
+<label>DHCP:
+<input type="checkbox" checked="false" name="dhcp" id="dhcp"></label>
+
+<label>ip-адрес/маска подсети:
+<input type="text" id="ip" name="ip" value="0" size="16"></label>
+
+<label>Основной шлюз:
+<input type="text" id="gw" name="gw" value="0" size="16"></label>
+
+<label>DNS сервер:
+<input type="text" id="dns" name="dns" value="0" size="16"></label>
+
+<label>Wi-Fi:
+<input type="checkbox" checked="false" name="wifi" id="wifi"></label>
+
+<label>SSID Wi-Fi платы:
+<input type="text" id="ap_ssid" name="ap_ssid" value="0" size="16"></label>
+
+<label>Пароль Wi-Fi платы:
+<input type="text" id="ap_pass" name="ap_pass" value="0" size="16"></label>
+
+<label>SSID вашего Wi-Fi:
+<input type="text" id="cl_ssid" name="cl_ssid" value="0" size="16"></label>
+
+<label>Пароль вашего Wi-Fi:
+<input type="text" id="cl_pass" name="cl_pass" value="0" size="16"></label>
+
+<label>Wi-Fi-all-redirect:
+<input type="checkbox" checked="false" name="all-redirect" id="all-redirect"></label>
+
+<div class="But" style="background-color:#bbb;" onclick="javascript:Netreset();alert('Значения в полях настроек сброшены на заводские. Нажмите сохранить для сброса настроек платы.');">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сброс
+	</a>
+</div>
+<div class="But" onclick="javascript:NetSave();alert('Сетевые настройки сохранены.');">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить
+	</a>
+</div>
+</div>
+<div class="MainFrame" style="">
+<h2 style="">Управление устройством:</h2>
+<label style="margin-left: 30%;">Зеркальное отображение:
+<input type="checkbox" checked="false" name="mirror" id="mirror"></label>
+<div class="But" style="background-color: #ffdf60;" onclick="javascript:Reboot();alert('Устройство перезагружается...');">
+	<a href="javascript:void(0);" style="font-size:40px;color:#000;">
+		Перезагрузить
+	</a>
+</div>
+</div>
+<script>
+
+	var socket={};
+	var SocketPort=8890;
+
+	const disconnectedColor="#580000";
+	
+	document.body.style.backgroundColor=disconnectedColor;
+	WebSockStart();
+	fetch('Network.txt')
+	.then(response => response.text())
+	.then(text => NetParse(text))
+
+function WebSockStart(){
+	for (var member in socket) delete socket[member];
+	socket = new WebSocket("ws://"+window.location.host+":" + SocketPort);
+	socket.onopen = connectionOpen;
+	socket.onclose = onClose;
+	socket.onmessage = messageReceived;
+}
+
+function NetParse(s){
+	let sockArr=s.split("\n");
+	sockArr.forEach((ee) => {
+		let sockCom=ee.split("=");
+		switch(sockCom[0]){
+			case "ip":
+				document.getElementById("ip").value=sockCom[1];
+			break;
+			case "gw":
+				document.getElementById("gw").value=sockCom[1];
+			break;
+			case "dns":
+				document.getElementById("dns").value=sockCom[1];
+			break;
+			case "ap_ssid":
+				document.getElementById("ap_ssid").value=sockCom[1];
+			break;
+			case "ap_pass":
+				document.getElementById("ap_pass").value=sockCom[1];
+			break;
+			case "cl_ssid":
+				document.getElementById("cl_ssid").value=sockCom[1];
+			break;
+			case "cl_pass":
+				document.getElementById("cl_pass").value=sockCom[1];
+			break;
+			case "dhcp":
+				document.getElementById("dhcp").checked=parseInt(sockCom[1]);
+			break;
+			case "wifi":
+				document.getElementById("wifi").checked=parseInt(sockCom[1]);
+			break;
+			case "all-redirect":
+				document.getElementById("all-redirect").checked=parseInt(sockCom[1]);
+			break;
+			default:
+		}
+	})
+}
+
+function Netreset(){
+	document.getElementById("ip").value="192.168.0.100/24";
+	document.getElementById("gw").value="192.168.0.1";
+	document.getElementById("dns").value="192.168.0.1 8.8.8.8";
+	document.getElementById("ap_ssid").value="Prompter";
+	document.getElementById("ap_pass").value="prompter";
+	document.getElementById("cl_ssid").value="ssid";
+	document.getElementById("cl_pass").value="pass";
+	document.getElementById("dhcp").checked=true;
+	document.getElementById("wifi").checked=true;
+	document.getElementById("all-redirect").checked=false;
+}
+
+function Reboot(){
+	socket.send('mirror='+(document.getElementById("mirror").checked?"1":"0"));
+	socket.send('reboot');
+}
+
+function NetSave(){
+	if ((document.getElementById("ip").value.length>7)&&(document.getElementById("gw").value.length>7)&&(document.getElementById("dns").value.length>7)&&(document.getElementById("ap_ssid").value.length>7)&&(document.getElementById("cl_ssid").value.length>3)){
+			let tempSet="";
+			tempSet="dhcp="+(document.getElementById("dhcp").checked?"1":"0")+"\n";
+			tempSet+="ip="+document.getElementById("ip").value+"\n";
+			tempSet+="gw="+document.getElementById("gw").value+"\n";
+			tempSet+="dns="+document.getElementById("dns").value+"\n\n";
+			
+			tempSet+="wifi="+(document.getElementById("wifi").checked?"1":"0")+"\n\n";
+			
+			tempSet+="ap_ssid="+document.getElementById("ap_ssid").value+"\n";
+			tempSet+="ap_pass="+document.getElementById("ap_pass").value+"\n\n";
+			
+			tempSet+="cl_ssid="+document.getElementById("cl_ssid").value+"\n";
+			tempSet+="cl_pass="+document.getElementById("cl_pass").value+"\n\n";
+			
+			tempSet+="all-redirect="+(document.getElementById("all-redirect").checked?"1":"0");
+			socket.send('newnetw='+tempSet);
+	}
+	else{
+		alert("Ошибка заполнения. Должны быть заполнены все поля, кроме паролей, если не требуются.")
+	}
+}
+
+function messageReceived(e) {
+	//console.log("recieved "+e.data);
+}
+
+function WebSockStop(){
+	socket.close();
+}
+
+function connectionOpen() {
+	document.body.style.backgroundColor="#000";
+}
+
+function onClose() {
+	document.body.style.backgroundColor=disconnectedColor;
+	setTimeout("WebSockStart();",1000);
+}
+
+window.onload = function() {
+	let tempstr="";
+	try {tempstr = document.getElementById('ReverseFile').contentWindow.document.body.innerHTML;}catch (e) {tempstr =""}
+	if (tempstr.indexOf("Cannot GET /Reverse.txt")>0){
+		document.getElementById("mirror").checked=false;
+	}
+	else{
+		document.getElementById("mirror").checked=true;
+	}
+}
+</script>
+</body>
+</html>

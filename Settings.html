@@ -1,0 +1,602 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="jscolor.min.js"></script>
+<style>
+
+body {
+	background:black;
+	font-family: Helvetica, Arial, Verdana;
+	font-size:30px;
+}
+
+h2{
+	color:#ffdf60;
+	font-size:50px;
+
+}
+
+a{
+	color: #FFF;
+	text-align: center;
+	text-decoration:none;
+	display: block;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#textentry  fieldset label {
+
+	color:#fff5cc;
+	font-weight:bold;
+	margin-left:20px;
+	display: inline-block;
+	min-width: 330px;
+	min-height: 40px;
+
+}
+
+label {
+
+	display:block;
+	padding: 15px;
+	text-align:left;
+	margin-left:30%;
+	
+}
+
+input {
+
+	font-size:30px;
+
+}
+
+#BackBut {
+	position:fixed;
+	Width:8%;
+	Height:5%;
+	border-radius:25px;
+	-webkit-border-radius:25px;
+	color: #FFF;
+	text-align: center;
+    font-size: 60px;
+	border-color: #FFF;
+    border: solid;
+	display:block;
+	Top:2%;
+	left:2%;
+	background:#888;
+}
+
+.But{
+	Width:50%;
+	Height:5%;
+	margin: 2% 2% 2% 30%;
+	border-radius:25px;
+	-webkit-border-radius:25px;
+	color: #FFF;
+	text-align: center;
+    font-size: 60px;
+	border-color: #FFF;
+    border: solid;
+	display:block;
+	Top:2%;
+	left:25%;
+	background-color: #396423;
+}
+
+.inBut{
+	position: absolute;
+	width:100%;
+	text-align: center;
+}
+
+.MainFrame{
+	margin: 1%;
+    color: #fff;
+    width: 98%;
+	display:block;
+	text-align:center;
+	border:solid;
+	border-color:#fff;
+	border-radius:20px;
+	-webkit-border-radius:20px;
+}
+
+.InputTextArea {
+	top: 2%;
+	width: 76%;
+	margin: 2% 2% 2% 6%;
+	height: 50%;
+	font-size: 16px;	
+	
+}
+
+.leftNum{
+	float: left;
+    margin-top: 20%;
+    margin-left: 10%;
+}
+</style>
+<title>Настройки</title>
+
+</head>
+<iframe id="myhtml" src="Scen.txt" hidden="true"></iframe>
+<iframe id="myhtml1" src="Scen1.txt" hidden="true"></iframe>
+<iframe id="myhtml2" src="Scen2.txt" hidden="true"></iframe>
+<iframe id="myhtml3" src="Scen3.txt" hidden="true"></iframe>
+<iframe id="myhtml4" src="Scen4.txt" hidden="true"></iframe>
+<iframe id="myhtml5" src="Scen5.txt" hidden="true"></iframe>
+<iframe id="myhtml6" src="Scen6.txt" hidden="true"></iframe>
+<iframe id="myhtml7" src="Scen7.txt" hidden="true"></iframe>
+<iframe id="myhtml8" src="Scen8.txt" hidden="true"></iframe>
+<iframe id="myhtml9" src="Scen9.txt" hidden="true"></iframe>
+<iframe id="myhtml10" src="Scen10.txt" hidden="true"></iframe>
+
+<body>
+<div id="BackBut" onclick="javascript:location.href='http://'+window.location.host;">
+	<a href="javascript:void(0);" style="bottom:20%;font-size:40px;" class="inBut">
+		←
+	</a>
+</div>
+<div class="MainFrame" style="">
+<h2 style="">Настройки:</h2>
+<label>Шрифт:
+<input type="text" id="initialfont" name="initialfont" value="120" size="8"></label>
+<label>Скорость:
+<input type="text" id="initialspeed" name="initialspeed" value="15" size="8"></label>
+<label>Отразить текст
+<input type="checkbox" checked="true" name="initialflip" id="initialflip"></label>
+<label>Цвет текста:
+<input type="text" id="initialcolor" name="initialcolor" value="#FFF" size="8" data-jscolor="{}"></label>
+<label>Поля (0..500):
+<input type="text" id="initialfields" name="initialfields" value="0" size="8"></label>
+<label>Заглавные буквы
+<input type="checkbox" checked="false" name="initialcap" id="initialcap"></label>
+<label>Перенос по словам
+<input type="checkbox" checked="false" name="initialbreak" id="initialbreak"></label>
+<label>Панель управления
+<input type="checkbox" checked="false" name="initialpanel" id="initialpanel"></label>
+<label>Шрифт оператора:
+<input type="text" id="initialfontoper" name="initialfontoper" value="60" size="8"></label>
+<label>Т обновления:
+<input type="text" id="initialtupdate" name="initialtupdate" value="30" size="8"></label>
+<label>Указатель мыши
+<input type="checkbox" checked="false" name="initialmouse" id="initialmouse"></label>
+<label>Перемотка колесиком
+<input type="checkbox" checked="true" name="initialscroll" id="initialscroll"></label>
+<label>Указатель-Y:
+<input type="text" id="initialarrow" name="initialarrow" value="500" size="8"></label>
+<label>Указатель-X:
+<input type="text" id="initialarrowleft" name="initialarrowleft" value="500" size="8"></label>
+<label>Треугольник
+<input type="checkbox" checked="true" name="initialtriangle" id="initialtriangle"></label>
+<label>Цвет треугольника:
+<input type="text" id="initialtrianglecolor" name="initialtrianglecolor" value="#FFF" size="8" data-jscolor="{}"></label>
+<label>Прицел
+<input type="checkbox" checked="true" name="initialaim" id="initialaim"></label>
+<label>Цвет прицела:
+<input type="text" id="initialaimcolor" name="initialaimcolor" value="#FFF" size="8" data-jscolor="{}"></label>
+
+<div class="But" style="background-color:#bbb;" onclick="javascript:reset();updateSets();alert('Значения в полях настроек сброшены на заводские. Нажмите сохранить для сброса настроек платы.');">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сброс
+	</a>
+</div>
+<div class="But" onclick="javascript:SetSettings();refresh();alert('Настройки сохранены.');">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить
+	</a>
+</div>
+</div>
+
+<div class="MainFrame" style="">
+	<h2 style="">Текущий текст:</h2>
+	<textarea id="MainText" class="InputTextArea">Текущий сценарий</textarea>
+	
+	<div class="But" style="margin: 0% 2% 2% 26%;background-color:#ffdf60;" onclick="javascript:replaceSelectedText(document.getElementById('MainText'), 'change_str');">
+	<a href="javascript:void(0);" style="font-size:35px;color:#000;">
+		Выделить
+	</a>
+	</div>
+	
+	<div class="But" style="margin: 2% 2% 2% 26%;" onclick="javascript:SetText(10);refresh();">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить ↻
+	</a>
+	</div>
+</div>
+
+<div class="MainFrame" style="">
+	<h2 style="">Сохраненные тексты:</h2>
+	
+	<div class="leftNum">1</div>
+	<textarea id="MainText0" style="margin: 2% 8% 2% 0%;" class="InputTextArea">Сценарий 1</textarea>
+		
+	<div class="But" style="margin: 0% 2% 2% 26%;background-color:#ffdf60;" onclick="javascript:replaceSelectedText(document.getElementById('MainText0'), 'change_str');">
+	<a href="javascript:void(0);" style="font-size:35px;color:#000;">
+		Выделить
+	</a>
+	</div>
+	
+	<div class="But" style="margin: 2% 2% 2% 26%;" onclick="javascript:SetText(0);">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить 1
+	</a>
+	</div>
+	
+	<div class="leftNum">2</div>
+	<textarea id="MainText1" style="margin: 2% 8% 2% 0%;" class="InputTextArea">Сценарий 2</textarea>
+		
+	<div class="But" style="margin: 0% 2% 2% 26%;background-color:#ffdf60;" onclick="javascript:replaceSelectedText(document.getElementById('MainText1'), 'change_str');">
+	<a href="javascript:void(0);" style="font-size:35px;color:#000;">
+		Выделить
+	</a>
+	</div>
+	
+	<div class="But" style="margin: 2% 2% 2% 26%;" onclick="javascript:SetText(1);">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить 2
+	</a>
+	</div>
+	
+	<div class="leftNum">3</div>
+	<textarea id="MainText2" style="margin: 2% 8% 2% 0%;" class="InputTextArea">Сценарий 3</textarea>
+		
+	<div class="But" style="margin: 0% 2% 2% 26%;background-color:#ffdf60;" onclick="javascript:replaceSelectedText(document.getElementById('MainText2'), 'change_str');">
+	<a href="javascript:void(0);" style="font-size:35px;color:#000;">
+		Выделить
+	</a>
+	</div>
+	
+	<div class="But" style="margin: 2% 2% 2% 26%;" onclick="javascript:SetText(2);">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить 3
+	</a>
+	</div>
+	
+	<div class="leftNum">4</div>
+	<textarea id="MainText3" style="margin: 2% 8% 2% 0%;" class="InputTextArea">Сценарий 4</textarea>
+		
+	<div class="But" style="margin: 0% 2% 2% 26%;background-color:#ffdf60;" onclick="javascript:replaceSelectedText(document.getElementById('MainText3'), 'change_str');">
+	<a href="javascript:void(0);" style="font-size:35px;color:#000;">
+		Выделить
+	</a>
+	</div>
+	
+	<div class="But" style="margin: 2% 2% 2% 26%;" onclick="javascript:SetText(3);">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить 4
+	</a>
+	</div>
+	
+	<div class="leftNum">5</div>
+	<textarea id="MainText4" style="margin: 2% 8% 2% 0%;" class="InputTextArea">Сценарий 5</textarea>
+		
+	<div class="But" style="margin: 0% 2% 2% 26%;background-color:#ffdf60;" onclick="javascript:replaceSelectedText(document.getElementById('MainText4'), 'change_str');">
+	<a href="javascript:void(0);" style="font-size:35px;color:#000;">
+		Выделить
+	</a>
+	</div>
+	
+	<div class="But" style="margin: 2% 2% 2% 26%;" onclick="javascript:SetText(4);">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить 5
+	</a>
+	</div>
+	
+	<div class="leftNum">6</div>
+	<textarea id="MainText5" style="margin: 2% 8% 2% 0%;" class="InputTextArea">Сценарий 6</textarea>
+		
+	<div class="But" style="margin: 0% 2% 2% 26%;background-color:#ffdf60;" onclick="javascript:replaceSelectedText(document.getElementById('MainText5'), 'change_str');">
+	<a href="javascript:void(0);" style="font-size:35px;color:#000;">
+		Выделить
+	</a>
+	</div>
+	
+	<div class="But" style="margin: 2% 2% 2% 26%;" onclick="javascript:SetText(5);">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить 6
+	</a>
+	</div>
+	
+	<div class="leftNum">7</div>
+	<textarea id="MainText6" style="margin: 2% 8% 2% 0%;" class="InputTextArea">Сценарий 7</textarea>
+		
+	<div class="But" style="margin: 0% 2% 2% 26%;background-color:#ffdf60;" onclick="javascript:replaceSelectedText(document.getElementById('MainText6'), 'change_str');">
+	<a href="javascript:void(0);" style="font-size:35px;color:#000;">
+		Выделить
+	</a>
+	</div>
+	
+	<div class="But" style="margin: 2% 2% 2% 26%;" onclick="javascript:SetText(6);">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить 7
+	</a>
+	</div>
+	
+	<div class="leftNum">8</div>
+	<textarea id="MainText7" style="margin: 2% 8% 2% 0%;" class="InputTextArea">Сценарий 8</textarea>
+		
+	<div class="But" style="margin: 0% 2% 2% 26%;background-color:#ffdf60;" onclick="javascript:replaceSelectedText(document.getElementById('MainText7'), 'change_str');">
+	<a href="javascript:void(0);" style="font-size:35px;color:#000;">
+		Выделить
+	</a>
+	</div>
+	
+	<div class="But" style="margin: 2% 2% 2% 26%;" onclick="javascript:SetText(7);">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить 8
+	</a>
+	</div>
+	
+	<div class="leftNum">9</div>
+	<textarea id="MainText8" style="margin: 2% 8% 2% 0%;" class="InputTextArea">Сценарий 9</textarea>
+		
+	<div class="But" style="margin: 0% 2% 2% 26%;background-color:#ffdf60;" onclick="javascript:replaceSelectedText(document.getElementById('MainText8'), 'change_str');">
+	<a href="javascript:void(0);" style="font-size:35px;color:#000;">
+		Выделить
+	</a>
+	</div>
+	
+	<div class="But" style="margin: 2% 2% 2% 26%;" onclick="javascript:SetText(8);">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить 9
+	</a>
+	</div>
+	
+	<div class="leftNum">10</div>
+	<textarea id="MainText9" style="margin: 2% 8% 2% 0%;" class="InputTextArea">Сценарий 10</textarea>
+		
+	<div class="But" style="margin: 0% 2% 2% 26%;background-color:#ffdf60;" onclick="javascript:replaceSelectedText(document.getElementById('MainText9'), 'change_str');">
+	<a href="javascript:void(0);" style="font-size:35px;color:#000;">
+		Выделить
+	</a>
+	</div>
+	
+	<div class="But" style="margin: 2% 2% 2% 26%;" onclick="javascript:SetText(9);">
+	<a href="javascript:void(0);" style="font-size:40px;">
+		Сохранить 10
+	</a>
+	</div>
+</div>
+
+<div class="MainFrame" style="text-align:center;">
+	<h2 style="">PDF:</h2>
+	<input style="padding: 20px;" id="pdf-file" type="file" accept="application/pdf">
+	
+	<div class="But" style="margin: 2% 2% 2% 26%;" onclick="javascript:SendPdf();alert('pdf отправлен');">
+		<a href="javascript:void(0);" style="font-size:40px;">
+			Отправить PDF
+		</a>
+	</div>
+	<div class="But" style="margin: 2% 2% 2% 26%;background-color:#888888;" onclick="javascript:PdfDelete();alert('pdf удален');">
+		<a href="javascript:void(0);" style="font-size:40px;">
+			Удалить PDF
+		</a>
+	</div>
+</div>
+
+</div>
+<script>
+function reset(){
+	FONT=120;  //размер шрифта
+	SPEED=12;  //скорость текста
+	Text_Color="#FFF";  //цвет текста в формате RGB
+	Fields=0;  //размер отступов по бокам
+	MIRROR_TEXT=1;  //зеркальный текст
+	CAPITAL_LETTERS=0;  //заглавные или прописные буквы
+	WORD_WRAP=0;  //перенос каждого слова
+	Show_Panel=1;  //отображение панели управления
+	Auto_Oper=0;  //автоматическое открытие экрана оператора
+	FONT_Oper=40;  //размер шрифта экрана оператора
+	T_Oper=30;  //период обновления текста экрана оператора
+	Mouse=1;  //отображение курсора мыши
+	WheelMove=0;  //перемотка текста колесиком мыши
+	Arrow_Top=555;  //высота указателя объектива
+	Arrow_Left=960;  //сдвиг указателя объектива
+	Triangle=1;  //отображение треугольника
+	Triangle_Color="#BBBBBBA0";  //цвет треугольника в формате RGB
+	Aim=0;  //отображение прицела
+	Aim_Color="#F9EEC2B5";  //цвет прицела в формате RGB
+	DoubleStop=0;  //сброс текста при двойном нажатии на верхнюю кнопку пульта
+}
+
+reset();
+</script>
+<script src="Settings.txt"></script>
+<script>
+
+	var socket={};
+	var SocketPort=8890;
+	var scenArr=new Array(10);
+	var TEXT="";
+	
+	const disconnectedColor="#580000";
+	
+	function updateSets(){
+		document.getElementById("initialfont").value=FONT;
+		document.getElementById("initialspeed").value=SPEED;
+		document.getElementById("initialcolor").value=Text_Color;
+		document.getElementById("initialfields").value=Fields;
+		document.getElementById("initialflip").checked=MIRROR_TEXT;
+		document.getElementById("initialcap").checked=CAPITAL_LETTERS;
+		document.getElementById("initialbreak").checked=WORD_WRAP;
+		document.getElementById("initialpanel").checked=Show_Panel;
+		document.getElementById("initialfontoper").value=FONT_Oper;
+		document.getElementById("initialtupdate").value=T_Oper;
+		document.getElementById("initialmouse").checked=Mouse;	
+		document.getElementById("initialscroll").checked=WheelMove;
+		document.getElementById("initialarrow").value=Arrow_Top;
+		document.getElementById("initialarrowleft").value=Arrow_Left;
+		document.getElementById("initialtriangle").checked=Triangle;
+		document.getElementById("initialtrianglecolor").value=Triangle_Color;
+		document.getElementById("initialaim").checked=Aim;
+		document.getElementById("initialaimcolor").value=Aim_Color;
+	}
+	
+	updateSets();
+	
+	document.body.style.backgroundColor=disconnectedColor;
+	WebSockStart();
+	
+
+function PdfDelete(){
+	socket.send('PdfDelete');
+}
+
+function SendPdf(){
+	let pdf = document.getElementById("pdf-file").files[0];  // file from input
+	let req = new XMLHttpRequest();
+	let formData = new FormData();
+	
+	if(document.getElementById("pdf-file").files.length==1){
+		PdfDelete();
+		setTimeout(function(){
+			formData.append("pdf-file", pdf);
+			req.open("POST", '/pdf');
+			req.send(formData);
+		},5000);
+	}
+	else{
+		alert("Выберите файл");
+	}
+}
+	
+function frame_convert(s){
+	return s.body.innerHTML.replace(/\<\/pre\>/g,"").replace(/\<pre\>/g,"").replace(/\<pre style=\"word-wrap: break-word; white-space: pre-wrap;\"\>/g,"").replace("404 Not Found","");
+}
+
+function ScensRoutine(){
+	for(let i=0;i<10;i++){
+		try {scenArr[i] = frame_convert(document.getElementById('myhtml'+(i+1)).contentWindow.document);}catch (e) {scenArr[i] =""}
+		document.getElementById('MainText'+i).value=scenArr[i];
+	}
+	try {TEXT = frame_convert(document.getElementById('myhtml').contentWindow.document);}catch (e) {TEXT =""}
+	document.getElementById('MainText').value=TEXT;
+}
+
+function refresh(){
+	socket.send('refresh');
+}
+
+function WebSockStart(){
+	for (var member in socket) delete socket[member];
+	socket = new WebSocket("ws://"+window.location.host+":" + SocketPort);
+	socket.onopen = connectionOpen;
+	socket.onclose = onClose;
+	socket.onmessage = messageReceived;
+}
+
+function messageReceived(e) {
+	//console.log("recieved "+e.data);
+}
+
+function WebSockStop(){
+	socket.close();
+}
+
+function connectionOpen() {
+	document.body.style.backgroundColor="#000";
+}
+
+function onClose() {
+	document.body.style.backgroundColor=disconnectedColor;
+	setTimeout("WebSockStart();",1000);
+}
+
+function SetSettings(){
+	let tempSet="";
+	tempSet="/*Записать в файл Settings.txt*/\r\n/*Параметры программы*/\r\n";
+	tempSet+="FONT="+document.getElementById("initialfont").value+";  /*размер шрифта*/\r\n";
+	tempSet+="SPEED="+document.getElementById("initialspeed").value+";  /*скорость текста*/\r\n";
+	tempSet+="Text_Color=\""+document.getElementById("initialcolor").value+"\";  /*цвет текста в формате RGB*/\r\n";
+	tempSet+="Fields="+document.getElementById("initialfields").value+";  /*размер отступов по бокам*/\r\n";
+	tempSet+="MIRROR_TEXT="+(document.getElementById("initialflip").checked?"1":"0")+";  /*зеркальный текст*/\r\n";
+	tempSet+="CAPITAL_LETTERS="+(document.getElementById("initialcap").checked?"1":"0")+";  /*заглавные или прописные буквы*/\r\n";
+	tempSet+="WORD_WRAP="+(document.getElementById("initialbreak").checked?"1":"0")+";  /*перенос каждого слова*/\r\n";
+	tempSet+="Show_Panel="+(document.getElementById("initialpanel").checked?"1":"0")+";  /*отображение панели управления*/\r\n";
+	tempSet+="Auto_Oper="+Auto_Oper+";  /*автоматическое открытие экрана оператора*/\r\n";
+	tempSet+="FONT_Oper="+document.getElementById("initialfontoper").value+";  /*размер шрифта экрана оператора*/\r\n";
+	tempSet+="T_Oper="+document.getElementById("initialtupdate").value+";  /*период обновления текста экрана оператора*/\r\n";
+	tempSet+="Mouse="+(document.getElementById("initialmouse").checked?"1":"0")+";  /*отображение курсора мыши*/\r\n";
+	tempSet+="WheelMove="+(document.getElementById("initialscroll").checked?"1":"0")+";  /*перемотка текста колесиком мыши*/\r\n";
+	tempSet+="Arrow_Top="+document.getElementById("initialarrow").value+";  /*высота указателя объектива*/\r\n";
+	tempSet+="Arrow_Left="+document.getElementById("initialarrowleft").value+";  /*сдвиг указателя объектива*/\r\n";
+	tempSet+="Triangle="+(document.getElementById("initialtriangle").checked?"1":"0")+";  /*отображение треугольника*/\r\n";
+	tempSet+="Triangle_Color=\""+document.getElementById("initialtrianglecolor").value+"\";  /*цвет треугольника в формате RGB*/\r\n";
+	tempSet+="Aim="+(document.getElementById("initialaim").checked?"1":"0")+";  /*отображение прицела*/\r\n";
+	tempSet+="Aim_Color=\""+document.getElementById("initialaimcolor").value+"\";  /*цвет прицела в формате RGB*/\r\n";
+	tempSet+="DoubleStop=0;  /*сброс текста при двойном нажатии на верхнюю кнопку пульта*/\r\n"
+
+	socket.send('newsett='+tempSet);
+}
+
+function SetText(n){
+	if (n==10){
+		socket.send("newtext="+document.getElementById("MainText").value);
+		alert('Текущий текст обновлен');
+	}
+	else{
+		socket.send("newtex"+n+"="+document.getElementById("MainText"+n).value);
+		alert('Текст '+(n+1)+' сохранен');
+	}
+}
+
+function change_str(s){
+	return "[hl]"+s+"[/hl]"
+}
+
+function replaceSelectedText(elem, str){
+
+  elem.focus();
+
+
+  if (document.selection){
+
+    var s = document.selection.createRange();
+ 
+    if (s.text){
+
+      eval("s.text="+str+"(s.text);");
+
+      s.select();
+
+      return true;
+
+    }
+
+  }
+
+  else if (typeof(elem.selectionStart) == "number"){
+
+    if (elem.selectionStart!=elem.selectionEnd){
+
+      var start = elem.selectionStart;
+
+      var end = elem.selectionEnd;
+
+
+      eval("var rs = "+str+"(elem.value.substr(start,end-start));");
+
+      elem.value = elem.value.substr(0,start)+rs+elem.value.substr(end);
+
+      elem.setSelectionRange(end,end);
+
+    }
+
+    return true;
+
+  }
+
+  return false;
+
+}
+
+window.onload = function() {
+	ScensRoutine();
+}
+</script>
+</body>
+</html>

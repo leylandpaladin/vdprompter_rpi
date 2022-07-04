@@ -1,0 +1,1257 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+
+	<style>
+	
+html, body, div, span, iframe, h1, h2, p, a, font, img {
+
+	margin: 0;
+
+	padding: 0;
+
+	border: 0;
+
+	outline: 0;
+
+	font-size: 100%;
+
+	vertical-align: baseline;
+
+	background: transparent;
+
+}
+
+
+table {
+
+	height:40px;
+
+}
+
+
+tr {
+
+	height:46px;
+
+}
+
+
+td {
+
+	text-align:center;
+
+	border:2px solid #888;
+
+	background:#c0caca;
+
+	height:32px;
+
+	-moz-border-radius:10px;
+
+	-webkit-border-radius:10px;
+
+	border-radius:10px;
+
+}
+
+
+tr.tablehead {
+
+	height:20px;
+
+}
+
+
+tr.tablehead td {
+
+	white-space: nowrap;
+
+	font-size:20px;
+	
+	padding-left: 5;
+	
+    padding-right: 5px;
+
+	border-top:1px solid white;
+
+	border-left:1px solid white;
+
+	border-right:1px solid white;
+
+	border-bottom:0px;
+
+	background:black;
+
+	color:#ccc;
+
+	height:20px;
+
+}
+
+body {
+
+	background:black;
+
+	/*padding:2px 2px 78px 2px;
+*/
+	overflow:hidden;
+
+	font-family: Helvetica, Arial, Verdana;
+
+	font-size:20px;
+
+	
+}
+
+
+a {
+
+	text-decoration: underline;
+
+	color:#ffdf60;
+
+	font-weight:bold;
+	
+	-webkit-user-select: none;
+	-moz-user-select: none;
+    -ms-user-select: none;
+
+}
+
+
+.info {
+
+	color:white;
+
+	font-family:Helvetica, Arial, Verdana;
+
+	border:2px solid #04405C;
+
+	background:#222;
+
+	width: 700px;
+
+	margin:10px 0px 10px 110px;
+
+	padding:15px;
+
+}
+
+.Blur {
+	position: absolute;
+	
+	background-color: #ffffff61;
+	
+	left: 0px;
+}
+
+#ActorBorder {
+
+    position: absolute;
+
+    border: solid;
+
+    border-color: #999;
+
+    width: 0px;
+
+    height: 0px;
+
+    top: 0px;
+
+    left: 0px;
+
+}
+
+#TextInput {
+	position: absolute;
+	
+	z-index:100000;
+	
+	width:80%;
+	
+	left:10%;
+	
+	height:60%;
+	
+	top:20%;
+	
+	background: #ffffff;
+	
+	display:none;
+	
+    border-radius: 15px;
+}
+
+#preview {
+
+	color:white;
+
+	border:1px dashed grey;
+
+	background:black;
+
+	font-family: Helvetica, Arial;
+
+	text-transform: uppercase;
+
+	font-weight:bold;
+
+	overflow:auto;
+
+}
+
+#spacer {
+
+	display:inline-block;
+
+	width:100px;
+
+	height:10px;
+
+
+}
+
+#topper {
+
+	color:#ffdf60;
+
+	background:#04405C;
+
+	width: 100%;
+
+	padding-top:10px;
+
+	font-weight:bold;
+
+	font-size:20px;
+
+	text-decoration:none;
+
+	min-height:25px;
+
+
+}
+
+ #topper a {
+
+ 	padding:3px 10px;
+
+	}
+
+.container {
+
+
+	/*padding-left:10%;
+
+	padding-right:10%;
+*/
+
+	width:100%;
+
+	height:100%;
+
+	overflow:auto;
+
+	z-index:200;
+
+
+	}
+
+.TextInputButton {
+
+	text-decoration: none;
+	
+    padding: 8px 30px 8px 30px;
+	
+    border: solid;
+	
+    display: inline-block;
+	
+    text-align: center;
+	
+    width: 28%;
+	
+}
+
+.ScenSwitchButton {
+
+	width: 4%;
+	
+	height: 30%;
+	
+	position: absolute;
+	
+	top: 30%;
+	
+	background-color: #eee;
+	
+}
+
+.InputTextArea {
+
+	top: 2%;
+	
+	width: 76%;
+	
+	margin: 40px 2% 2% 12%;
+	
+	height: 80%;
+	
+	font-size: 16px;
+	
+	float:left;
+}
+
+.prompter,#reference {
+
+	position:relative;
+
+	overflow-wrap:break-word;
+
+	display:block;
+
+	font-size:25px;
+
+	font-family: Helvetica, Arial;
+
+	text-transform: uppercase;
+
+	font-weight:bold;
+
+	color:#FFF;
+
+	z-index:1;
+
+	left:0px;
+
+	top:0px;
+
+	overflow:hidden;
+
+	margin-right:0px;
+	
+	-webkit-user-select: none;
+	-moz-user-select: none;
+    -ms-user-select: none;
+
+	}
+
+
+.arrow {
+
+    -webkit-user-select: none;
+    /* user-select -- это нестандартное свойство */
+
+    -moz-user-select: none;
+    /* поэтому нужны префиксы */
+
+    -ms-user-select: none;
+	
+	cursor:pointer;
+
+	position:absolute;
+
+	color:white;
+
+	top:50px;
+
+	left:0px;
+
+	z-index:999;
+
+	color:#bbb;
+
+	font-size:100px;
+
+	margin:0px;
+
+	padding:0px;
+
+	}
+
+
+p.demo {
+
+		color:white;
+
+		font-size:20px;
+
+		border: 1px solid #aaaaff;
+
+		padding:5px;
+
+		background:black;
+
+		z-index:999;
+
+		}
+
+		
+#textentry {
+
+	/*position:absolute;
+
+	top:80px;
+
+	left:100px;
+*/
+	font-family: Helvetica, Arial, Verdana;
+
+	font-size:20px;
+
+	color:white;
+
+	background:#555;
+
+	padding:5px;
+
+	width:85%;
+
+
+}
+
+
+#textentry  textarea {
+
+	border:0px;
+
+	padding:5px;
+
+	width:100%;
+
+
+}
+
+
+#textentry  fieldset {
+
+	background:#333;
+
+	border:2px solid white;
+
+	padding:6px;
+
+	margin-top:5px;
+
+}
+
+
+#textentry  fieldset label {
+
+	font-weight:bold;
+
+	margin-left:20px;
+
+}
+
+input {
+
+	font-size:20px;
+
+}
+
+
+#textentry  fieldset a {
+
+	text-decoration:none;
+
+	font-family: Helvetica, Arial, Verdana;
+
+	font-size:28px;
+
+	font-weight:bold;
+
+	text-align:center;
+
+	color:white;
+
+	padding:5px 0px;
+
+/*	border-top:1px solid white;
+
+	border-left:1px solid white;
+
+	border-bottom:2px solid #aaa;
+
+	border-right:2px solid #aaa;
+
+	margin-top:15px;
+
+	background:#C99400;
+*/
+	display:block;
+
+	width:100%;
+
+}
+
+
+#textentry  fieldset a.gButton {
+
+	color:black;
+
+}
+
+
+.counter {
+
+	font-family: Helvetica, Arial, Verdana;
+
+	color:white;
+
+	font-size:35px;
+
+	font-weight:bold;
+
+
+	background:#c0caca;
+
+	width:100%;
+
+	height:100%;
+
+	text-align:center;
+
+}
+
+
+.gButton, #controller a.gButton {
+
+	font-family: Helvetica, Arial, Verdana;
+
+	color:black;
+
+	font-size:25px;
+
+	font-weight:bold;
+
+	background:#c0caca;
+
+	-moz-border-radius:10px;
+
+	-webkit-border-radius:10px;
+
+	border-radius:10px;
+
+	padding-left: 8px;
+	
+    padding-right: 8px;
+}
+
+
+
+#controller {
+
+	height:145px;
+
+	bottom:0px;
+
+	position:fixed;
+
+	border-top:1px dashed grey;
+
+	width:98%;
+
+	z-index:999;
+
+	background:black;
+
+}
+
+
+#controller a {
+
+	text-decoration:none;
+
+	font-family: Helvetica, Arial, Verdana;
+
+	font-size:14px;
+
+	font-weight:bold;
+
+	color:white;
+
+	padding:5px;
+
+}
+
+
+#controller span {
+
+	margin-left:20px;
+
+}
+
+
+#console {
+
+	display:block;
+
+	position:absolute;
+
+	top:0px;
+
+	right:0px;
+
+	color:white;
+
+	background:black;
+
+	margin:10px;
+
+	padding:5px;
+
+}
+
+
+.pause {
+
+	color:#444;
+
+}
+
+
+.hl {
+
+	color:#FFFC40;
+
+}
+
+
+
+
+
+#textcontrols {
+
+width:100%;
+
+background: #444;
+
+padding:5px 0px;
+
+
+}
+
+
+	</style>
+<title>Окно управления</title>
+
+</head>
+<iframe id="myhtml1" src="Scen1.txt" hidden="true"></iframe>
+<iframe id="myhtml2" src="Scen2.txt" hidden="true"></iframe>
+<iframe id="myhtml3" src="Scen3.txt" hidden="true"></iframe>
+<iframe id="myhtml4" src="Scen4.txt" hidden="true"></iframe>
+<iframe id="myhtml5" src="Scen5.txt" hidden="true"></iframe>
+<iframe id="myhtml6" src="Scen6.txt" hidden="true"></iframe>
+<iframe id="myhtml7" src="Scen7.txt" hidden="true"></iframe>
+<iframe id="myhtml8" src="Scen8.txt" hidden="true"></iframe>
+<iframe id="myhtml9" src="Scen9.txt" hidden="true"></iframe>
+<iframe id="myhtml10" src="Scen10.txt" hidden="true"></iframe>
+
+<body onkeydown='interpretKey(event)' onkeyup='interpretKey(event)'>
+<div class="container" id="container" style="overflow: auto;">
+<div class="prompter" id="prompter" onclick="javascript:socket.send('toggle');" style="display: block; text-transform: none;visibility: visible; color: rgb(255, 255, 255);"></div>
+
+<div id="controller">
+<table cellspacing="5"><tbody id="contrtab"><tr class="tablehead">
+<td colspan="2">Воспроизведение</td>
+<td colspan="3">Скорость</td>
+<td colspan="3">Шрифт актера</td>
+<td colspan="3">Шрифт оператора</td>
+<td colspan="2">Обновить</td>
+<td id="textN" colspan="3" style="">- Текущий -</td>
+</tr><tr>
+<td style="min-width: 40px">
+<a href="javascript:void(0)" onclick="javascript:socket.send('reverse');" title="Назад - [Стрелка вверх или влево, TAB]" class="gButton" id="reverse">◄</a>
+</td><td style="min-width: 40px">
+<a href="javascript:void(0)" onclick="javascript:socket.send('toggle');" title="Вперед - [Стрелка вниз или вправо, ESC, F5]" class="gButton" id="play">▷</a>
+</td><td>		
+<a href="javascript:speeddown();" title="Замедлить - [Page Up]" class="gButton">-</a>
+</td><td>
+<label class="counter" id="currentspeed">2</label>
+</td><td>
+<a href="javascript:speedup();" title="Ускорить - [Page Down]" class="gButton">+</a>
+</td><td>
+<a href="javascript:socket.send('font='+(font-1));" onmousedown="" onmouseup="" class="gButton">▼</a>
+</td><td>
+<label class="counter" id="currentfont">NaN</label>
+</td><td>
+<a href="javascript:socket.send('font='+(font+1));" onmousedown="" onmouseup="" class="gButton">▲</a>
+</td>
+<td>
+<a href="javascript:void(0)" onmousedown="javascript:fontDown()" onmouseup="javascript:fontstop()" class="gButton">▼</a>
+</td><td>
+<label class="counter" id="currentoperfont">NaN</label>
+</td><td>
+<a href="javascript:void(0)" onmousedown="javascript:fontUp()" onmouseup="javascript:fontstop()" class="gButton">▲</a>
+</td>
+<td colspan="2">
+<a href="javascript:void(0)" onclick="javascript:socket.send('refresh');alert('Текст перезагружен');" title="Обновить" class="gButton">↻</a>
+</td>
+<td colspan="2">
+<a href="javascript:void(0)" onclick="javascript:document.getElementById('TextMessage').value=TEXT;if (document.getElementById('TextInput').style.display=='block'){document.getElementById('TextInput').style.display='none';} else {document.getElementById('TextInput').style.display='block';}"  title="Ввести текст" class="gButton">ТЕКСТ</a>
+</td>
+</tr><tr>
+<td colspan="12">
+<textarea id="ActorMessage" style="width: 98%;font-size: 16px;">Сообщение диктору</textarea>
+</td>
+<td colspan="2">
+<a href="javascript:void(0)" onclick="javascript:SendMes()" title="Сообщение диктору" class="gButton">→</a>
+</td>
+<td colspan="2">
+<a href="javascript:void(0)" onclick="javascript:location.href='http://'+window.location.host;" title="Главная страница" class="gButton">Главная</a>
+</td>
+</tr>
+</tbody></table>
+
+
+</div>
+<div id="UpperBlur" style="top:0px;" class="Blur">
+</div>
+<div id="ActorBorder">
+</div>
+<div id="BottomBlur" style="height:100%;" class="Blur">
+</div>
+
+<div id="TextInput">
+<div style="text-align:center;position:absolute;top:1%;width:100%;" id="TextNum2">
+- Текущий -
+</div>
+<a href="javascript:void(0)" style="left:2%;" onclick="javascript:previousText();" title="Предыдущий текст [F1+установить]" class="gButton TextInputButton ScenSwitchButton">
+<svg viewBox="0 0 26 26" height="100%" width="50%">
+	<line x1="7" y1="13" x2="19" y2="0" stroke="black" stroke-width="3" stroke-linecap="round" />
+	<line x1="7" y1="13" x2="19" y2="26" stroke="black" stroke-width="3" stroke-linecap="round" />
+</svg></a>
+<a href="javascript:void(0)" style="right:2%;" onclick="javascript:nextText();" title="Следующий текст [F2+установить]" class="gButton TextInputButton ScenSwitchButton">
+<svg viewBox="0 0 26 26" height="100%" width="50%">
+	<line x1="19" y1="13" x2="7" y2="0" stroke="black" stroke-width="3" stroke-linecap="round" />
+	<line x1="19" y1="13" x2="7" y2="26" stroke="black" stroke-width="3" stroke-linecap="round" />
+</svg></a>
+<div style="position: absolute;width: 100%;bottom: 5px;">
+<a href="javascript:void(0)" style="float:left;margin: 0% 2% 0% 12%;" onclick="javascript:document.getElementById('TextInput').style.display='none';" title="Обновить текст" class="gButton TextInputButton">Отмена</a>
+<a href="javascript:void(0)" style="float:right;margin: 0% 12% 0% 2%;" onclick="javascript:SendText();document.getElementById('TextInput').style.display='none';alert('Текст обновлен');" title="Обновить текст" class="gButton TextInputButton">→</a>
+</div>
+<textarea id="TextMessage" class="InputTextArea">Вставьте текст в данное поле.</textarea>
+</td>
+</div>
+
+ <script>
+	var fsize=0;
+	var ftimer=0;
+	var timerID=0;
+	var socket={};
+	var WebSockTimer=0;
+	var possibleScrollTop=0;
+	var LastPossibleScrollTop=0;
+	var LastSentScrollTop=0;
+	var possibleWindowWidth=0;
+	var SocketPort=8890;
+	var fields=0;
+	var scrollHeight=0;
+	var clientWidth=0;
+	var clientHeight=0;
+	var innerWidth=0;
+	var leftarr=false;
+	var rightarr=false;
+	var downarr=false;
+	var uparr=false;
+	var leftarrpressed=false;
+	var rightarrpressed=false;
+	var downarrpressed=false;
+	var uparrpressed=false;
+	var f1pressed=false;
+	var f2pressed=false;
+	var esc=false;
+	var f5=false;
+	var tab=false;
+	var escpressed=false;
+	var f5pressed=false;
+	var tabpressed=false;
+	var initialfontoper=0;
+	var TEXT="";
+	var initialtupdate=30;
+	var speed=0;
+	var font=0;
+	var promptState=0;
+	var f=0;
+	var scrollTop=0;
+	var m;
+	const disconnectedColor="#580000";
+	var scenArr=new Array(10);
+	var curScen=10;
+	var blockScrollTopRecieve=0;
+	var blockScrollTopTimer=0;
+	
+	upd=function(){
+		document.getElementById("prompter").style.width=100*(clientWidth-fields*2)*parseInt(document.getElementById("prompter").style.fontSize)/font/document.getElementById("container").clientWidth+"%";
+		
+		possibleScrollTop=scrollTop*document.getElementById("container").scrollHeight/scrollHeight;
+		if (LastPossibleScrollTop!=possibleScrollTop){
+			blockScrollTopTimer=0;
+			LastPossibleScrollTop=possibleScrollTop;
+			document.getElementById("container").scrollTop=possibleScrollTop;
+			if (document.getElementById("container").scrollTop!=possibleScrollTop){
+				document.getElementById("ActorBorder").style.top=possibleScrollTop-document.getElementById("container").scrollTop;
+			}
+			else{
+				document.getElementById("ActorBorder").style.top=0;
+			}
+		}
+		else{
+			if ((Math.abs(document.getElementById("container").scrollTop+parseInt(document.getElementById("ActorBorder").style.top)-possibleScrollTop)>1)&&(Math.abs(LastSentScrollTop-(document.getElementById("container").scrollTop*scrollHeight/document.getElementById("container").scrollHeight))>1)&&(promptState==0)){
+				LastSentScrollTop=document.getElementById("container").scrollTop*scrollHeight/document.getElementById("container").scrollHeight;
+				socket.send("scrollTop="+LastSentScrollTop);
+				blockScrollTopRecieve=1;
+				clearTimeout(blockScrollTopTimer);
+				blockScrollTopTimer=setTimeout("blockScrollTopRecieve=0;",100);
+			}
+			else{
+				blockScrollTopTimer=0;
+			}
+		}
+		
+		possibleWindowWidth=innerWidth*parseInt(document.getElementById("currentoperfont").innerHTML)/parseInt(document.getElementById("currentfont").innerHTML)+25;
+		if (window.innerWidth<(document.getElementById("contrtab").clientWidth)){window.resizeTo(document.getElementById("contrtab").clientWidth+25,window.outerHeight)}
+		else if ((possibleWindowWidth>(document.getElementById("contrtab").clientWidth+25))&&(window.outerWidth!=possibleWindowWidth)){
+			window.resizeTo(possibleWindowWidth,window.outerHeight)}
+		
+		document.getElementById("ActorBorder").style.width=document.getElementById("prompter").style.width;
+		document.getElementById("ActorBorder").style.height=clientHeight*document.getElementById("container").scrollHeight/scrollHeight;
+		document.getElementById("UpperBlur").style.width=(document.getElementById("ActorBorder").clientWidth+6)+"px";
+		document.getElementById("BottomBlur").style.width=(document.getElementById("ActorBorder").clientWidth+6)+"px";
+		document.getElementById("BottomBlur").style.top=(parseInt(document.getElementById("ActorBorder").style.height)+parseInt(document.getElementById("ActorBorder").style.top)+6)+"px";
+		document.getElementById("UpperBlur").style.height=document.getElementById("ActorBorder").style.top;
+		document.getElementById("prompter").style.paddingLeft=((100-parseInt(document.getElementById("prompter").style.width))/2)+"%";
+		document.getElementById("ActorBorder").style.left=(parseInt(document.getElementById("prompter").style.paddingLeft)-1)+"%";
+		document.getElementById("UpperBlur").style.left=document.getElementById("ActorBorder").style.left;
+		document.getElementById("BottomBlur").style.left=document.getElementById("ActorBorder").style.left;
+		if ((possibleWindowWidth<document.getElementById("contrtab").clientWidth)&&(document.getElementById("container").scrollHeight==document.getElementById("container").clientHeight)){
+			fsize=fsize+1;
+			document.getElementById("prompter").style.fontSize=fsize+"px";
+			updateFontSize();
+		}
+	}
+	
+	document.onmouseup = function() {fontstop()};
+	
+	document.getElementById("ActorBorder").style.top=0;
+	
+	window.addEventListener("wheel", e => {wheelroutine(e);})
+	
+	function wheelroutine(e){
+	
+	e = e || window.event; document.getElementById("container").scrollTop+=(e.deltaY || e.detail || e.wheelDelta)/2;
+		/*e = e || window.event;
+		let delta=(e.deltaY || e.detail || e.wheelDelta)/2;
+		if (delta>0){
+			if (document.getElementById("container").scrollTop<(document.getElementById("container").scrollHeight-document.getElementById("container").clientHeight)){
+				document.getElementById("container").scrollTop+=delta;
+			}
+			else{
+				document.getElementById("ActorBorder").style.top=(parseInt(document.getElementById("ActorBorder").style.top)+delta)+"px";
+			}
+		}
+		else{
+			if (parseInt(document.getElementById("ActorBorder").style.top)>1){
+				document.getElementById("ActorBorder").style.top=(parseInt(document.getElementById("ActorBorder").style.top)+delta)+"px";
+				if (parseInt(document.getElementById("ActorBorder").style.top)<0) document.getElementById("ActorBorder").style.top="0px";
+			}
+			else{
+				document.getElementById("container").scrollTop+=delta;
+			}
+		}
+*/
+	}
+	
+	updateFontSize=function(){
+		fsize=parseInt(document.getElementById("prompter").style.fontSize);
+		document.getElementById("currentoperfont").innerHTML=fsize;
+	}
+	
+	fontstop=function(){
+		clearInterval(ftimer);
+		ftimer=0;
+	}
+
+	fontDown=function(){
+		fsize=fsize-1;
+		document.getElementById("prompter").style.fontSize=fsize+"px";
+		updateFontSize();
+		if(!ftimer){
+			ftimer=setInterval("fontDown()",100)
+		}
+	}
+
+	fontUp=function(){
+		fsize=fsize+1;
+		document.getElementById("prompter").style.fontSize=fsize+"px";
+		updateFontSize();
+		if(!ftimer){
+			ftimer=setInterval("fontUp()",100)
+		}
+	}
+	
+	SendMes=function(){
+		socket.send("message="+document.getElementById("ActorMessage").value);
+		alert("Сообщение отправлено");
+	}
+	
+	SendText=function(){
+		socket.send("newtext="+document.getElementById("TextMessage").value);
+		socket.send('refresh');
+	}
+	
+	function interpretKey(b,c){
+		var a=b||window.event;
+		if(a.type=="keydown"){
+			switch(a.keyCode){
+				case 112:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					if (!f1pressed){
+						f1pressed=true;
+						previousText();
+						SendText();
+					}
+				break;
+				case 113:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					if (!f2pressed){
+						f2pressed=true;
+						nextText();
+						SendText();
+					}
+				break;
+				case 37:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					if (!leftarrpressed){
+						leftarrpressed=true;
+						leftarr=true;
+						setTimeout("leftarr=false",200);
+						socket.send('reverse');
+					}
+				break;
+				case 39:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					if (!rightarrpressed){
+						rightarrpressed=true;
+						rightarr=true;
+						setTimeout("rightarr=false",200);
+						socket.send('toggle');
+					}
+				break;
+				case 38:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					if (!uparrpressed){
+						uparrpressed=true;
+						uparr=true;
+						setTimeout("uparr=false",200);
+						socket.send('reverse');
+					}
+				break;
+				case 40:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					if (!downarrpressed){
+						downarrpressed=true;
+						downarr=true;
+						setTimeout("downarr=false",200);
+						socket.send('toggle');
+					}
+				break;
+				case 116:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					if (!f5pressed){
+						f5pressed=true;
+						f5=true;
+						setTimeout("f5=false",200);
+						socket.send('toggle');
+					}
+				break;
+				case 27:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					if (!escpressed){
+						if (document.getElementById('TextInput').style.display=='block'){
+							document.getElementById('TextInput').style.display='none';
+						}
+						else{
+							socket.send('toggle');
+						}
+						escpressed=true;
+						esc=true;
+						setTimeout("esc=false",200);
+					}
+				break;
+				case 9:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					if (!tabpressed){
+						tabpressed=true;
+						tab=true;
+						setTimeout("tab=false",200);
+						socket.send('reverse');
+					}
+				break;
+				case 34:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					speedup();
+				break;
+				case 33:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					speeddown();
+				break;
+				default:
+			}
+		}
+		else if(a.type=="keyup"){
+			switch(a.keyCode){
+				case 112:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					f1pressed=false;
+				break;
+				case 113:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					f2pressed=false;
+				break;
+				case 37:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					leftarrpressed=false;
+					if (!leftarr){
+						socket.send('reverse');
+					}
+				break;
+				case 39:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					rightarrpressed=false;
+					if (!rightarr){
+						socket.send('toggle');
+					}
+				break;
+				case 38:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					uparrpressed=false;
+					if (!uparr){
+						socket.send('reverse');
+					}
+				break;
+				case 40:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					downarrpressed=false;
+					if (!downarr){
+						socket.send('toggle');
+					}
+				break;
+				case 116:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					f5pressed=false;
+					if (!f5){
+						socket.send('toggle');
+					}
+				break;
+				case 27:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					escpressed=false;
+					if (!esc){
+						socket.send('toggle');
+					}
+				break;
+				case 9:
+					a.returnValue = false;
+					a.preventDefault;
+					a.keyCode = 0;
+					tabpressed=false;
+					if (!tab){
+						socket.send('reverse');
+					}
+				break;
+				default:
+			}
+		}
+	}
+	
+	function speedup(){
+		if (speed>0){socket.send('speed='+(speed+1));}else{socket.send('speed='+(speed-1))}
+	}
+	
+	function speeddown(){
+		if (speed>0){socket.send('speed='+(speed-1));}else{socket.send('speed='+(speed+1))}
+	}
+	
+	function WebSockStart(){
+		clearInterval(WebSockTimer);
+		for (var member in socket) delete socket[member];
+		socket = new WebSocket("ws://"+window.location.host+":" + SocketPort);
+		socket.onopen = connectionOpen;
+		socket.onmessage = messageReceived;
+		socket.onclose = onClose;
+	}
+	
+	function WebSockStop(){
+		socket.close();
+	}
+	
+	function connectionOpen() {
+		document.body.style.backgroundColor="#000";
+	}
+	
+	function onClose() {
+		clearInterval(timerID);
+		document.body.style.backgroundColor=disconnectedColor;
+		setTimeout("WebSockStart();",1000);
+	}
+	
+	function frame_convert(s){
+		return s.body.innerHTML.replace(/\<\/pre\>/g,"").replace(/\<pre\>/g,"").replace(/\<pre style=\"word-wrap: break-word; white-space: pre-wrap;\"\>/g,"").replace("404 Not Found","");
+	}
+
+	
+	function ScensRoutine(){
+		for(let i=0;i<10;i++){
+			try {scenArr[i] = frame_convert(document.getElementById('myhtml'+(i+1)).contentWindow.document);}catch (e) {scenArr[i] =""}
+			if (scenArr[i]=="") scenArr[i]="Сценарий "+(i+1);
+		}
+	}
+	
+	function npText(){
+		if (curScen==10){
+			document.getElementById('TextMessage').value=TEXT;
+			document.getElementById("textN").innerHTML="- Текущий -";
+			document.getElementById("TextNum2").innerHTML="- Текущий -";
+		}
+		else{
+			document.getElementById('TextMessage').value=scenArr[curScen];
+			document.getElementById("textN").innerHTML="- "+(curScen+1)+" -";
+			document.getElementById("TextNum2").innerHTML="- "+(curScen+1)+" -";
+		}
+	}
+	
+	function nextText(){
+		curScen++;
+		if (curScen>10) curScen=0;
+		npText();
+	}
+	
+	function previousText(){
+		curScen--;
+		if (curScen<0) curScen=10;
+		npText();
+	}
+
+	function messageReceived(e) {
+	//console.log("recieved "+e.data);
+	let sockCom=[];
+	if (e.data.slice(0,5)=="TEXT="){sockCom.push("TEXT");sockCom.push(e.data.slice(5,e.data.length));} else {sockCom=e.data.split("=");}
+		switch(sockCom[0]){
+			case "scrollTop":
+				if (blockScrollTopRecieve!=1){
+					scrollTop=parseFloat(sockCom[1]);
+				}
+			break;
+			case "speed":
+				speed=parseInt(sockCom[1]);
+				document.getElementById("currentspeed").innerHTML=Math.abs(speed);
+			break;
+			case "font":
+				font=parseInt(sockCom[1]);
+				document.getElementById("currentfont").innerHTML=font;
+			break;
+			case "promptState":
+				promptState=parseInt(sockCom[1]);
+				if (promptState){
+					if (speed>0){
+						document.getElementById("play").innerHTML="Ⅱ";
+						document.getElementById("reverse").innerHTML="◄";
+					}
+					else{
+						document.getElementById("play").innerHTML="▷";
+						document.getElementById("reverse").innerHTML="Ⅱ";
+					}
+				}
+				else{
+					document.getElementById("play").innerHTML="▷";
+					document.getElementById("reverse").innerHTML="◄";
+				}
+			break;
+			case "fields":
+				fields=parseInt(sockCom[1]);
+			break;
+			case "scrollHeight":
+				scrollHeight=parseInt(sockCom[1]);
+			break;
+			case "clientWidth":
+				clientWidth=parseInt(sockCom[1]);
+			break;
+			case "clientHeight":
+				clientHeight=parseInt(sockCom[1]);
+			break;
+			case "innerWidth":
+				innerWidth=parseInt(sockCom[1]);
+			break;
+			case "initialfontoper":
+				if (initialfontoper==0){
+					initialfontoper=parseInt(sockCom[1]);
+					document.getElementById("prompter").style.fontSize=initialfontoper+"px";
+					updateFontSize();
+				}
+			break;
+			case "TEXT":
+				TEXT=sockCom[1];
+				document.getElementById("prompter").innerHTML="<br><br>"+TEXT.replace(/\n/g,"<br>").replace(/\[hl\]/g,"<span class='hl'>").replace(/\[\/hl\]/g,"</span>")+"<br><br><br><br><br>";
+			break;
+			case "initialtupdate":
+				initialtupdate=parseInt(sockCom[1]);
+				clearInterval(timerID);
+				timerID=setInterval("upd()",initialtupdate);
+			break;
+			default:
+		}
+		
+	}
+	
+	document.body.style.backgroundColor=disconnectedColor;
+	WebSockStart();
+	
+	window.onload = function() {
+		ScensRoutine();
+	}
+</script>
+</body>
+</html>

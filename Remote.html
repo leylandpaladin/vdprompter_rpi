@@ -1,0 +1,222 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<style>
+
+body {
+	background:black;
+	overflow:hidden;
+	font-family: Helvetica, Arial, Verdana;
+	font-size:20px;
+}
+
+a{
+	color: #FFF;
+	text-align: center;
+	text-decoration:none;
+	display: block;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.BigBut {
+	position:absolute;
+	Width:40%;
+	Height:40%;
+	border-radius:25px;
+	-webkit-border-radius:25px;
+	color: #FFF;
+	text-align: center;
+    font-size: 80px;
+	border-color: #FFF;
+    border: solid;
+	display:block;
+}
+
+.MenuBut {
+	position:absolute;
+	Width:44%;
+	Height:10%;
+	border-radius:25px;
+	-webkit-border-radius:25px;
+	color: #FFF;
+	text-align: center;
+    font-size: 60px;
+	border-color: #FFF;
+    border: solid;
+	display:block;
+	Top:2%;
+	background:#888;
+}
+
+.SpeedBut{
+	top:25%;
+	width:25%;
+	height:60%;
+	font-size: 100px;
+}
+
+.inBut{
+	position: absolute;
+	width:100%;
+	text-align: center;
+}
+</style>
+<title>Пульт</title>
+
+</head>
+<body>
+<div>
+
+	<div style="Left:2%;" class="MenuBut" onclick="javascript:gomain();">
+		<a href="javascript:void(0);" style="top:0%;font-size:40px;" class="inBut">
+			←
+		</a>
+	</div>
+	<div style="right:2%;font-size:80px;" class="MenuBut" onclick="javascript:refresh();alert('Текст перезагружен');">
+		<a href="javascript:void(0);" style="top:0%;font-size:40px;" class="inBut">
+			↻
+		</a>
+	</div>
+	
+
+	<div id="reversebut" style="top:15%;Left:29.5%;" class="BigBut" onmousedown="javascript:if (!isTouchCapable) reversedown();" ontouchstart="javascript:if (isTouchCapable) reversedown();" onmouseup="javascript:if (!isTouchCapable) reverseup();" ontouchend="javascript:if (isTouchCapable) reverseup();">
+		<svg viewBox="0 0 26 26" height="100%" width="100%">
+			<polygon points="8,18 18,18 13,8" style="fill:white;stroke:white;stroke-width:1" />
+		</svg>
+	</div>
+	
+	<div style="left:1%;" class="BigBut SpeedBut" onclick="javascript:speeddown();">
+		<svg viewBox="0 0 26 26" height="100%" width="100%">
+			<line x1="7" y1="13" x2="19" y2="13" stroke="white" stroke-width="3" />
+		</svg>
+	</div>
+
+	<div style="right:1%;" class="BigBut SpeedBut" onclick="javascript:speedup();">
+		<svg viewBox="0 0 26 26" height="100%" width="100%">
+			<line x1="7" y1="13" x2="19" y2="13" stroke="white" stroke-width="3" />
+			<line x1="13" y1="7" x2="13" y2="19" stroke="white" stroke-width="3" />
+		</svg>
+	</div>
+
+	<div id="forwardbut" style="top:58%;Left:29.5%;" class="BigBut" onmousedown="javascript:if (!isTouchCapable) toggledown();" ontouchstart="javascript:if (isTouchCapable) toggledown();" onmouseup="javascript:if (!isTouchCapable) toggleup();" ontouchend="javascript:if (isTouchCapable) toggleup();">
+		<svg viewBox="0 0 26 26" height="100%" width="100%">
+			<polygon points="8,8 18,8 13,18" style="fill:none;stroke:white;stroke-width:1" />
+		</svg>
+	</div>
+	
+	<div id="speed" style="display: block;position:absolute; top:88%; Left:79%; width:5%; color:#FFF; height:5%;font-size:48;text-align:center;">
+		0
+	</div>
+	
+</div>
+<script>
+var SocketPort=8890;
+const disconnectedColor="#580000";
+var toggleF=false;
+var reverseF=false;
+var speed=0;
+var promptState=0;
+var socket={};
+
+var isTouchCapable = 'ontouchstart' in window ||
+ window.DocumentTouch && document instanceof window.DocumentTouch ||
+ navigator.maxTouchPoints > 0 ||
+ window.navigator.msMaxTouchPoints > 0;
+
+document.body.style.backgroundColor=disconnectedColor;
+WebSockStart();
+
+function refresh(){
+	socket.send('refresh');
+	location.reload();
+}
+
+function toggledown(){
+	toggleF=true;
+	socket.send('toggle');
+	setTimeout("toggleF=false",200);
+}
+
+function toggleup(){
+	if (!toggleF) socket.send('toggle');
+}
+
+function reversedown(){
+	reverseF=true;
+	socket.send('reverse');
+	setTimeout("reverseF=false",200);
+}
+
+function reverseup(){
+	if (!reverseF) socket.send('reverse');
+}
+
+function gomain(){
+	location.href="http://"+window.location.host;
+}
+
+function WebSockStart(){
+	for (var member in socket) delete socket[member];
+	socket = new WebSocket("ws://"+window.location.host+":" + SocketPort);
+	socket.onopen = connectionOpen;
+	socket.onclose = onClose;
+	socket.onmessage = messageReceived;
+}
+
+function messageReceived(e) {
+	//console.log("recieved "+e.data);
+	let sockCom=[];
+	if (e.data.slice(0,5)=="TEXT="){sockCom.push("TEXT");sockCom.push(e.data.slice(5,e.data.length));} else {sockCom=e.data.split("=");}
+	switch(sockCom[0]){
+		case "speed":
+			speed=parseInt(sockCom[1]);
+			document.getElementById("speed").innerHTML=Math.abs(speed);
+		break;
+		case "promptState":
+			promptState=parseInt(sockCom[1]);
+			if (promptState){
+				if (speed>0){
+					document.getElementById("forwardbut").style.backgroundColor="#396423";
+					document.getElementById("reversebut").style.backgroundColor="#000000";
+				}
+				else{
+					document.getElementById("forwardbut").style.backgroundColor="#000000";
+					document.getElementById("reversebut").style.backgroundColor="#396423";
+				}
+			}
+			else{
+				document.getElementById("forwardbut").style.backgroundColor="#000000";
+				document.getElementById("reversebut").style.backgroundColor="#000000";
+			}
+		break;
+		default:
+	}
+
+}
+
+function speedup(){
+	if (speed>0){socket.send('speed='+(speed+1));}else{socket.send('speed='+(speed-1))}
+}
+
+function speeddown(){
+	if (speed>0){socket.send('speed='+(speed-1));}else{socket.send('speed='+(speed+1))}
+}
+
+function WebSockStop(){
+	socket.close();
+}
+
+function connectionOpen() {
+	document.body.style.backgroundColor="#000";
+}
+
+function onClose() {
+	document.body.style.backgroundColor=disconnectedColor;
+	setTimeout("WebSockStart();",1000);
+}
+</script>
+</body>
+</html>

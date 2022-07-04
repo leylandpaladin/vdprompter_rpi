@@ -1,0 +1,2166 @@
+<!-- saved from url=(0032)https://kingview.ru/TVTOOLS.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<!-- saved from url=(0019)http://kingview.ru/ -->
+<script src="jscolor.min.js"></script>
+<script>
+
+//Параметры программы
+FONT=120;  //размер шрифта
+SPEED=12;  //скорость текста
+Text_Color="#FFF";  //цвет текста в формате RGB
+Fields=0;  //размер отступов по бокам
+MIRROR_TEXT=1;  //зеркальный текст
+CAPITAL_LETTERS=0;  //заглавные или прописные буквы
+WORD_WRAP=0;  //перенос каждого слова
+Show_Panel=1;  //отображение панели управления
+Auto_Oper=0;  //автоматическое открытие экрана оператора
+FONT_Oper=60;  //размер шрифта экрана оператора
+T_Oper=30;  //период обновления текста экрана оператора
+Mouse=1;  //отображение курсора мыши
+WheelMove=0;  //перемотка текста колесиком мыши
+Arrow_Top=555;  //высота указателя объектива
+Arrow_Left=960;  //сдвиг указателя объектива
+Triangle=1;  //отображение треугольника
+Triangle_Color="#BBBBBBA0";  //цвет треугольника в формате RGB
+Aim=0;  //отображение прицела
+Aim_Color="#F9EEC2B5";  //цвет прицела в формате RGB
+DoubleStop=0;  //сброс текста при двойном нажатии на верхнюю кнопку пульта
+
+</script>
+<script src="Settings.txt"></script>
+<title>TV TOOLS</title>
+<!--[if IE ]>
+<style type="text/css">
+.prompter,#reference {
+
+	position:relative;
+
+	display:block;
+
+	font-size:25px;
+
+	font-family: Helvetica, Arial;
+
+	text-transform: uppercase;
+
+	font-weight:bold;
+
+	color:#FFF;
+
+	background:black;
+
+	z-index:1;
+
+	left:0px;
+
+	top:0px;
+
+	overflow:hidden;
+
+	margin-right:0px;
+
+	margin-left:50px;
+
+	width:100%;
+
+	}
+
+	
+	#textentry fieldset a.plain{
+
+	display:inline;
+
+	text-decoration:none;
+
+	color:#ffdf60;
+
+	font-weight:bold;
+
+	font-size:12px;
+
+	width:110px;
+
+position:relative;
+
+	top:-2px;
+
+	padding:0px;
+
+	margin:0px;
+
+}
+
+</style>
+<![endif]-->
+	<style>
+	
+html, body, div, span, iframe, h1, h2, p, a, font, img {
+
+	margin: 0;
+
+	padding: 0;
+
+	border: 0;
+
+	outline: 0;
+
+	font-size: 100%;
+
+	vertical-align: baseline;
+
+	background: transparent;
+
+}
+
+
+table {
+
+	height:40px;
+
+}
+
+
+tr {
+
+	height:40px;
+
+}
+
+
+td {
+
+	min-width:48px;
+
+	text-align:center;
+
+	border:2px solid #888;
+
+	background:#c0caca;
+
+	width:48px;
+
+	height:32px;
+
+	-moz-border-radius:10px;
+
+	-webkit-border-radius:10px;
+
+	border-radius:10px;
+
+}
+
+
+tr.tablehead {
+
+	height:20px;
+
+}
+
+
+tr.tablehead td {
+
+	font-size:20px;
+
+	border-top:1px solid white;
+
+	border-left:1px solid white;
+
+	border-right:1px solid white;
+
+	border-bottom:0px;
+
+	background:black;
+
+	color:#ccc;
+
+	height:20px;
+
+}
+
+body {
+
+	background:black;
+
+	/*padding:2px 2px 78px 2px;
+*/
+	overflow:hidden;
+
+	font-family: Helvetica, Arial, Verdana;
+
+	font-size:20px;
+
+	
+}
+
+
+a {
+
+	text-decoration: underline;
+
+	color:#ffdf60;
+
+	font-weight:bold;
+
+}
+
+
+.info {
+
+	color:white;
+
+	font-family:Helvetica, Arial, Verdana;
+
+	border:2px solid #04405C;
+
+	background:#222;
+
+	width: 700px;
+
+	margin:10px 0px 10px 110px;
+
+	padding:15px;
+
+}
+
+
+#preview {
+
+	color:white;
+
+	border:1px dashed grey;
+
+	background:black;
+
+	font-family: Helvetica, Arial;
+
+	text-transform: uppercase;
+
+	font-weight:bold;
+
+	overflow:auto;
+
+}
+
+#spacer {
+
+	display:inline-block;
+
+	width:100px;
+
+	height:10px;
+
+
+}
+
+#topper {
+
+	color:#ffdf60;
+
+	background:#04405C;
+
+	width: 100%;
+
+	padding-top:10px;
+
+	font-weight:bold;
+
+	font-size:20px;
+
+	text-decoration:none;
+
+	min-height:25px;
+
+
+}
+
+ #topper a {
+
+ 	padding:3px 10px;
+
+	}
+
+
+.container {
+	
+	/*padding-left:10%;
+
+	padding-right:10%;
+*/
+
+	width:100%;
+
+	height:100%;
+
+	overflow:auto;
+
+	z-index:200;
+
+
+	}
+
+
+
+.prompter,#reference {
+
+	position:relative;
+
+	display:block;
+
+	font-size:25px;
+
+	font-family: Helvetica, Arial;
+
+	text-transform: uppercase;
+
+	font-weight:bold;
+
+	color:#FFF;
+
+	background:black;
+	
+	background-color: transparent;
+	
+	overflow-wrap: break-word;
+	
+	overflow: visible;
+
+	z-index:1;
+
+	left:0px;
+
+	top:0px;
+
+	margin-right:0px;
+
+	}
+
+
+.arrow {
+
+    -webkit-user-select: none;
+    /* user-select -- это нестандартное свойство */
+
+    -moz-user-select: none;
+    /* поэтому нужны префиксы */
+
+    -ms-user-select: none;
+	
+	cursor:pointer;
+
+	position:absolute;
+
+	color:white;
+
+	top:500px;
+
+	left:-14px;
+
+	z-index:999;
+
+	color:#bbb;
+
+	font-size:100px;
+
+	margin:0px;
+
+	padding:0px;
+
+	}
+
+.aim {
+
+    -webkit-user-select: none;
+    /* user-select -- это нестандартное свойство */
+
+    -moz-user-select: none;
+    /* поэтому нужны префиксы */
+
+    -ms-user-select: none;
+	
+	cursor:pointer;
+
+	position:absolute;
+
+	color:white;
+
+	top:500px;
+
+	left:0px;
+
+	z-index:998;
+
+	font-size:100px;
+	
+	width:100%;
+	
+	height:5px;
+	
+	background-color:#f9eec2b5;
+
+	margin:0px;
+
+	padding:0px;
+
+	}
+	
+.aim-v {
+
+    -webkit-user-select: none;
+    /* user-select -- это нестандартное свойство */
+
+    -moz-user-select: none;
+    /* поэтому нужны префиксы */
+
+    -ms-user-select: none;
+	
+	cursor:pointer;
+
+	position:absolute;
+
+	color:white;
+
+	top:0px;
+
+	left:50%;
+
+	z-index:998;
+
+	font-size:100px;
+	
+	width:5px;
+	
+	height:100%;
+	
+	background-color:#f9eec2b5;
+
+	margin:0px;
+
+	padding:0px;
+
+	}
+
+p.demo {
+
+		color:white;
+
+		font-size:20px;
+
+		border: 1px solid #aaaaff;
+
+		padding:5px;
+
+		background:black;
+
+		z-index:999;
+
+		}
+
+		
+#textentry {
+
+	/*position:absolute;
+
+	top:80px;
+
+	left:100px;
+*/
+	font-family: Helvetica, Arial, Verdana;
+
+	font-size:20px;
+
+	color:white;
+
+	background:#555;
+
+	padding:5px;
+
+	width:85%;
+
+
+}
+
+
+#textentry  textarea {
+
+	border:0px;
+
+	padding:5px;
+
+	width:100%;
+
+
+}
+
+
+#textentry  fieldset {
+
+	background:#333;
+
+	border:2px solid white;
+
+	padding:6px;
+
+	margin-top:5px;
+
+}
+
+
+#textentry  fieldset label {
+
+	color:#fff5cc;
+	font-weight:bold;
+	margin-left:20px;
+	display: inline-block;
+	min-width: 330px;
+	min-height: 40px;
+
+}
+
+input {
+
+	font-size:20px;
+
+}
+
+
+#textentry  fieldset a {
+
+	text-decoration:none;
+
+	font-family: Helvetica, Arial, Verdana;
+
+	font-size:28px;
+
+	font-weight:bold;
+
+	text-align:center;
+
+	color:white;
+
+	padding:10px 0px;
+
+/*	border-top:1px solid white;
+
+	border-left:1px solid white;
+
+	border-bottom:2px solid #aaa;
+
+	border-right:2px solid #aaa;
+
+	margin-top:15px;
+
+	background:#C99400;
+*/
+	display:block;
+
+	width:100%;
+
+}
+
+
+#textentry  fieldset a.gButton {
+
+	color:black;
+
+}
+
+#ProgMessage {
+
+	display:none;
+	
+	position:absolute;
+	
+	top:14%;
+	
+	left:20%;
+	
+	width:60%;
+	
+	text-align:center;
+	
+	font-size: 80px;
+	
+    background-color: #777777d0;
+	
+    border: solid;
+	
+    z-index: 1000;
+	
+    color: #ffdf60;
+	
+    border-color: #333;
+	
+    border-radius: 20px;
+	
+}
+
+
+.counter {
+
+	font-family: Helvetica, Arial, Verdana;
+
+	color:white;
+
+	font-size:35px;
+
+	font-weight:bold;
+
+
+	background:#c0caca;
+
+	width:100%;
+
+	height:100%;
+
+	text-align:center;
+
+}
+
+
+.gButton, #controller a.gButton {
+
+	font-family: Helvetica, Arial, Verdana;
+
+	color:black;
+
+	font-size:25px;
+
+	font-weight:bold;
+
+	background:#c0caca;
+
+	-moz-border-radius:10px;
+
+	-webkit-border-radius:10px;
+
+	border-radius:10px;
+
+
+}
+
+
+
+#controller {
+
+	height:80px;
+
+	bottom:0px;
+
+	position:fixed;
+
+	display:none;
+
+	border-top:1px dashed grey;
+
+	width:100%;
+
+	z-index:999;
+
+	background:black;
+
+}
+
+
+#controller a {
+
+	text-decoration:none;
+
+	font-family: Helvetica, Arial, Verdana;
+
+	font-size:14px;
+
+	font-weight:bold;
+
+	color:white;
+
+	padding:5px;
+
+}
+
+
+#controller span {
+
+	margin-left:20px;
+
+}
+
+
+#console {
+
+	display:block;
+
+	position:absolute;
+
+	top:0px;
+
+	right:0px;
+
+	color:white;
+
+	background:black;
+
+	margin:10px;
+
+	padding:5px;
+
+}
+
+
+.pause {
+
+	color:#444;
+
+}
+
+
+.hl {
+
+	color:#FFFC40;
+
+}
+
+
+
+
+
+#textcontrols {
+
+width:100%;
+
+background: #444;
+
+padding:5px 0px;
+
+
+}
+
+	
+	</style>
+	
+	<script language="JavaScript">
+	
+	var elem = document.documentElement;
+	function fullScreen() {
+		if (document.getElementById("FullScreen").innerHTML=="Развернуть"){
+			document.getElementById("FullScreen").innerHTML="Свернуть";
+			openFullscreen();
+		}
+		else{
+			document.getElementById("FullScreen").innerHTML="Развернуть";
+			closeFullscreen();
+		}
+	}
+	
+	function openFullscreen() {
+		var docElm = document.documentElement;
+		if (docElm.requestFullscreen) {
+			docElm.requestFullscreen();
+		}
+		else if (docElm.mozRequestFullScreen) {
+			docElm.mozRequestFullScreen();
+		}
+		else if (docElm.webkitRequestFullScreen) {
+			docElm.webkitRequestFullScreen();
+		}
+		else if (docElm.msRequestFullscreen) {
+			docElm.msRequestFullscreen();
+		}
+	}
+	
+	function closeFullscreen() {
+		if (document.exitFullscreen) {
+			document.exitFullscreen();
+		}
+		else if (document.mozCancelFullScreen) {
+			document.mozCancelFullScreen();
+		}
+		else if (document.webkitCancelFullScreen) {
+			document.webkitCancelFullScreen();
+		}
+		else if (document.msExitFullscreen) {
+			document.msExitFullscreen();
+		}
+	}
+
+var $=function(a){
+return document.getElementById(a)}
+;
+function concatObject(a){
+str="";
+for(prop in a){
+if(a[prop]&&typeof(a[prop])!="object"&&typeof(a[prop])!="function"&&prop!="innerHTML"&&prop!="outerHTML"&&prop!="outerText"&&prop!="textContent"&&prop!="text"&&prop!="innerText"){
+str+=prop+" : "+a[prop]+" :"+typeof(a[prop])+"\n"}
+}
+return(str)}
+String.prototype._$$split=String.prototype._$$split||String.prototype.split;
+String.prototype.split=function(l,d){
+if(!(l instanceof RegExp)){
+return String.prototype._$$split.apply(this,arguments)}
+var c=(l.global?"g":"")+(l.ignoreCase?"i":"")+(l.multiline?"m":""),h=new RegExp("^"+l.source+"$",c),b=[],g=l.lastIndex,a=0,e=0,f,k;
+if(d===undefined||+d<0){
+d=false}
+else{
+d=Math.floor(+d);
+if(!d){
+return[]}
+}
+if(l.global){
+l.lastIndex=0}
+else{
+l=new RegExp(l.source,"g"+c)}
+while((!d||e++<=d)&&(f=l.exec(this))){
+var j=!f[0].length;
+if(j&&l.lastIndex>f.index){
+l.lastIndex--}
+if(l.lastIndex>a){
+if(f.length>1){
+f[0].replace(h,function(){
+for(var m=1;
+m<arguments.length-2;
+m++){
+if(arguments[m]===undefined){
+f[m]=undefined}
+}
+}
+)}
+b=b.concat(this.slice(a,f.index));
+if(1<f.length&&f.index<this.length){
+b=b.concat(f.slice(1))}
+k=f[0].length;
+a=l.lastIndex}
+if(j){
+l.lastIndex++}
+}
+b=a===this.length?(l.test("")&&!k?b:b.concat("")):(d?b:b.concat(this.slice(a)));
+l.lastIndex=g;
+return b}
+;
+String.prototype.trim=function(){
+return this.replace(/^\s\s*/,"").replace(/\s\s*$/,"")}
+;
+function getSelection(a){
+var c=[a.value,"","",""];
+if(document.selection){
+var d="#$%^%$#";
+var b=document.selection.createRange();
+if(b.parentElement()!=a){
+return null}
+c[2]=b.text;
+b.text=d;
+fb=a.value.split(d);
+b.moveStart("character",-d.length);
+b.text=c[2];
+c[1]=fb[0];
+c[3]=fb[1]}
+else{
+if(a.selectionStart==a.selectionEnd){
+return null}
+c=(new RegExp("([]{"+a.selectionStart+"})(.{"+(a.selectionEnd-a.selectionStart)+"})(.*)")).exec(a.value)}return c}
+function matchPTags(a){
+a=" "+a+" ";
+ot=a.split(/\[[B|U|I].*?\]/i);
+ct=a.split(/\[\/[B|U|I].*?\]/i);
+return ot.length==ct.length}
+function addPTag(b,a){
+bits=getSelection(b);
+if(bits){
+if(!matchPTags(bits[2])){
+alert("\t\tInvalid Selection\nSelection contains unmatched opening or closing tags.");
+return}
+b.value=bits[1]+"["+a+"]"+bits[2]+"[/"+a+"]"+bits[3]}
+}
+var PROMPT_STOPPED=0;
+var PROMPT_PLAYING=1;
+var promptState=PROMPT_STOPPED;
+var ToggleUp=0;
+var SpeedUpUp=0;
+var SpeedDownUp=0;
+var lastTop=0;
+var pauseCounter=0;
+var speed=2;
+var fsize=parseInt(getStyle($("prompter"),"fontSize"));
+var ftimer=0;
+var timerID=0;
+var WebSockTimer=0;
+var lastWebSpeed=0;
+var lastWebBase="";
+var lastWebTop=0;
+var lastpromptState=0;
+var Socket={};
+var SocketPort="8889";
+var ProgMessageCount=0;
+var PgUpPressed=0;
+var PgDwnPressed=0;
+var LocReloadTimer=0;
+var scen="Вставьте текст в данное поле.";
+var scenArr=new Array(10);
+scenArr[0]="Сценарий 1";
+scenArr[1]="Сценарий 2";
+scenArr[2]="Сценарий 3";
+scenArr[3]="Сценарий 4";
+scenArr[4]="Сценарий 5";
+scenArr[5]="Сценарий 6";
+scenArr[6]="Сценарий 7";
+scenArr[7]="Сценарий 8";
+scenArr[8]="Сценарий 9";
+scenArr[9]="Сценарий 10";
+var scenNTemp=0;
+var scenN=0;
+var externControllerWindow=null;
+function getStyle(b,c){
+if(b){
+var d=b.style[c];
+if(!d){
+var a=document.defaultView.getComputedStyle(b,null);
+d=a?a[c]:null}
+return parseFloat(d)}
+return d=="auto"?null:d}
+function gup(b){
+b=b.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");
+var a="[\\?&]"+b+"=([^&#]*)";
+var d=new RegExp(a);
+var c=d.exec(window.location.href);
+if(c==null){
+return""}
+else{
+return c[1]}
+}
+function getElementsByClassName(d){
+var e=(document.all)?document.all:document.getElementsByTagName("*");
+var b=new Array();
+var c=new RegExp("\\b"+d+"\\b");
+for(var a=0;
+a<e.length;
+a++){
+if(c.test(e[a].className)){
+b.push(e[a])}
+}
+return b}
+var PromptController=function(){
+this.skipspeed=60;
+this.rolling=false;
+this.rolldirection=1;
+this.paused=false;
+this.actualspeed=speed;
+this.reachedEnd=false;
+var d=null;
+var a=null;
+var c=null;
+var b=null;
+this.init=function(){
+this.updateSpeedLabel();
+this.updateFontSize();
+this.setPlayButton();
+d=$("container");
+c=$("prompter");
+b=$("reference")}
+;
+this.setSpeed=function(f){
+this.actualspeed=f;
+speed=f;
+this.updateSpeedLabel()}
+;
+this.setFontSize=function(f){
+c.style.fontSize=f;
+b.style.fontSize=f;
+this.updateFontSize()}
+;
+this.start=function(f){
+a=$("endmarker");
+promptState=PROMPT_PLAYING;
+if(!f){
+this.reset()}
+clearInterval(timerID);
+that=this;
+this.setPlayButton();
+timerID=setInterval("that.stepDown()",30)
+}
+;
+this.stop=function(){
+clearInterval(timerID);
+promptState=PROMPT_STOPPED;
+this.setPlayButton()}
+;
+this.reset=function(){
+this.stop();
+lastTop=0;
+pauseCounter=0;
+d.scrollTop=0;
+this.reachedEnd=0;
+this.setPlayButton()}
+;
+var e=0;
+this.stepDown=function(){
+var g=0.67;
+if(this.rolling){
+speed=this.skipspeed*this.rolldirection}
+else{
+if(this.paused){
+speed=0;
+g=0}
+else{
+speed=this.actualspeed;
+if (speed<0) g=-g;}
+}
+if(lastTop<-1){
+lastTop=0}
+lastTop=lastTop+(speed/10+g);
+d.scrollTop=lastTop;
+if(e==d.scrollTop&&!this.paused){
+this.reachedEnd=true;
+lastTop=d.scrollTop;
+this.stop()}
+else{
+e=d.scrollTop;
+var f=$("pause"+pauseCounter);
+if(f!=null){
+if(f.offsetTop<=lastTop){
+this.pause(1000)}
+}
+}
+}
+;
+this.pause=function(f){
+that=this;
+pauseCounter++;
+this.paused=true;
+setTimeout("that.resume()",f)}
+;
+this.resume=function(){
+lastTop=lastTop+1;
+this.paused=false}
+;
+this.setPlayButton=function(){
+var j=$("play");
+var g="&#x2161;";
+var f="&#x25BA;";
+if(externControllerWindow){
+var h=externControllerWindow.document.getElementById("play");
+if(h&&promptState==PROMPT_PLAYING){
+h.innerHTML=g}
+else{
+h.innerHTML=f}
+}
+if(promptState==PROMPT_PLAYING){
+j.innerHTML=g}
+else{
+j.innerHTML=f}
+}
+;
+this.toggle=function(){
+if (this.actualspeed<0){this.actualspeed=-this.actualspeed}
+this.togglePlay();
+this.setPlayButton()}
+;
+this.togglePlay=function(){
+if (this.actualspeed<0){this.actualspeed=-this.actualspeed}
+if(promptState==PROMPT_PLAYING){
+this.stop()}
+else{
+this.start(true)}
+}
+;
+this.rollBack=function(f){
+this.start(true);
+this.rolling=f;
+this.rolldirection=-1;
+this.reachedEnd=false}
+;
+this.rollFwd=function(f){
+if(!this.reachedEnd){
+this.start(true);
+this.rolling=f;
+this.rolldirection=1}
+}
+;
+this.speedUp=function(){
+if(!this.paused){
+//speed+=1;
+if (this.actualspeed<0){if (this.actualspeed!=1) speed-=1;}
+else {if (this.actualspeed!=-1) speed+=1;}
+this.actualspeed=speed;
+this.updateSpeedLabel()}
+}
+;
+this.speedDown=function(){
+if(!this.paused){
+//speed=(speed>2)?--speed:--speed;
+if (this.actualspeed<0){if (this.actualspeed!=-1) speed+=1;}
+else {if (this.actualspeed!=1) speed-=1;}
+this.actualspeed=speed;
+this.updateSpeedLabel()}
+}
+;
+this.updateSpeedLabel=function(){
+$("currentspeed").innerHTML=Math.abs(speed);
+if(externControllerWindow){
+externControllerWindow.document.getElementById("currentspeed").innerHTML=speed}
+}
+;
+this.updateFontSize=function(){
+fsize=parseInt(getStyle(c,"fontSize"));
+$("currentfont").innerHTML=fsize;
+if(externControllerWindow){
+externControllerWindow.document.getElementById("currentfont").innerHTML=fsize}
+}
+;
+this.fontstop=function(){
+clearInterval(ftimer);
+ftimer=0}
+;
+this.fontDown=function(){
+fsize=fsize-1;
+c.style.fontSize=fsize+"px";
+b.style.fontSize=fsize+"px";
+this.updateFontSize();
+that=this;
+if(!ftimer){
+ftimer=setInterval("that.fontDown()",100)}
+}
+;
+this.fontUp=function(){
+fsize=fsize+1;
+c.style.fontSize=fsize+"px";
+b.style.fontSize=fsize+"px";
+this.updateFontSize();
+that=this;
+if(!ftimer){
+ftimer=setInterval("that.fontUp()",100)}
+}
+}
+;
+function escapeHTML(a){
+var b=a.replace(/&#38;/g,"&amp;");
+b=b.replace(/&(?!amp;|apos;|quot;|gt;|lt;|#\d+;)/gi,"&amp;");
+b=b.replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+return b}
+String.prototype.reverse=function(){
+return this.split("").reverse().join("")}
+;
+function formatit(){
+$("textentry").style.display="none";
+var j=escapeHTML($("promptinput").value);
+j=j.replace(/\n/g,"<br/>");
+var k=$("initialcap").checked;
+var g=parseInt($("initialspeed").value);
+var d=parseInt($("initialfont").value);
+if (Mouse==0){
+	document.getElementById("prompter").style.cursor="none";}
+else{
+	document.getElementById("prompter").style.cursor="auto";}
+var a=$("initialflip").checked;
+Controller.setSpeed(g);
+Controller.setFontSize(d);
+Controller.reset();
+var e="<span class='pause' id='pause'>[pause]</span>";
+j=j.replace(/&lt;br \/&gt;/g,"<br/>");
+var h=j.replace(/\[pause\]/g,e);
+var h=h.replace(/\[hl\]/g,"<span class='hl'>");
+var h=h.replace(/\[\/hl\]/g,"</span>");
+$("prompter").innerHTML=h;
+if(!a){
+var f=getElementsByClassName("pause");
+for(i in f){
+f[i].id="pause"+i}
+}
+if (Show_Panel==1){
+	$("controller").style.display="block";}
+else{
+	$("controller").style.display="none";
+	$("container").style.height=screen.height;}
+var b=$("prompter");
+b.style.display="none";
+b.style.textTransform=k?"uppercase":"none";
+var c=$("reference");
+b.style.textAlign="center";
+c.style.textAlign="left"
+b.style.display="block";
+if(a){
+$("controller").style.transform="scale(-1,1)";
+$("controller").style.webkitTransform="scale(-1,1)";
+b.style.transform="scale(-1,1)";
+b.style.webkitTransform="scale(-1,1)";
+}
+else{
+$("controller").style.transform="scale(1,1)";
+$("controller").style.webkitTransform="scale(1,1)";
+b.style.transform="scale(1,1)";
+b.style.webkitTransform="scale(1,1)";
+}
+//startmsg="[Пробел для старта]";
+//endmsg="[Конец]";
+startmsg="";
+endmsg="";
+if($("initialbreak").checked){
+	b.innerHTML=b.innerHTML.replace(/\s+/g,'<br>');;
+}
+b.innerHTML=startmsg+"<br/><br/>"+b.innerHTML+"<span id='endmarker'><br/><br/>"+endmsg+"<br/><br/><br/></span>";
+$("container").style.overflow="hidden";
+document.body.style.padding="2px 2px 78px 2px";
+$("topper").style.display="none"}
+function formatit2(){
+$("textentry").style.display="none";
+var e=$("initialcap").checked;
+var g=escapeHTML($("promptinput").value);
+g=g.replace(/\n/g,"<br/>");
+var h=parseInt($("initialspeed").value);
+var f=parseInt($("initialfont").value);
+Controller.setSpeed(h);
+Controller.setFontSize(f);
+Controller.reset();
+var b="<span class='pause' id='pause'>[pause]</span>";
+g=g.replace(/&lt;br \/&gt;/g,"<br>");
+var d=g.replace(/\[pause\]/g,b);
+var d=d.replace(/\[hl\]/g,"<span class='hl'>");
+var d=d.replace(/\[\/hl\]/g,"</span>");
+//$("prompter").innerHTML="<br/><br/>--- Пробел для старта ---<br/><br/>"+d+"<span id='endmarker'><br/><br/>--- Конец ---<br/><br/><br/></span>";
+$("prompter").innerHTML="<br/><br/>"+d+"<span id='endmarker'><br/><br/><br/><br/><br/></span>";
+var a=getElementsByClassName("pause");
+for(var c=0;
+c<a.length;
+c++){
+a[c].id="pause"+c}
+$("controller").style.display="block";
+$("prompter").style.textTransform=e?"uppercase":"none";
+$("container").style.overflow="hidden";
+document.body.style.padding="2px 2px 78px 2px";
+$("topper").style.display="none"}
+function explicitWrap(g,f,l){
+var PrompterWidth=parseInt(window.getComputedStyle(document.querySelector('#prompter')).width);
+var RowChars=parseInt(PrompterWidth/fsize)+5;
+var j=f.clientHeight;
+if(g.clientHeight>=j){
+	var p=[];
+	var c=g.innerHTML.toString();
+	var a=new RegExp("\\s+","gi");
+	var k=c.replace(/(\S)<br>/ig,"$1 <br>");
+	var k=k.replace(/(\S)<br\/>/ig,"$1 <br>");
+	var k=k.replace(/(\S)<br \/>/ig,"$1 <br>");
+	var k=k.replace(/<br>/ig,"<br> ");
+	p=k.split(a);
+	var n=[];
+	var chars=0;
+	//var e="";
+	var aa=$("initialbreak").checked;
+	
+	for(i in p){
+		if (!(aa)){
+			chars+=p[i].length;
+			//if (p[i].indexOf("<br>") !== -1){chars=0};
+			if (p[i] == "<br>"){chars=0}
+			else if (chars>RowChars){
+				chars=p[i].length+1;
+				p[i]="<br>"+p[i];
+				if(p[i].substr(4).length>RowChars){
+					p[i]=p[i].substr(0,RowChars+4)+"<br>"+p[i].substr(RowChars+4);
+					chars=p[i].length-RowChars-3;
+				}
+			}
+			else {
+				chars+=1;
+			}
+		}
+		n.push(p[i].trim());
+		if(d(n)){
+			if (aa){
+				//e+=n.toString()+"\n";
+				p[i-1]+="<br>";
+			}
+			else{
+				//e+=n.toString(); 
+			}
+			n=[];
+			n.push(p[i]);
+		}
+	}
+	var m=p.join(" ");
+	if(l){
+		var o=/<br>|<br\/>|<br \/>/ig;
+		var h=m.split(o);
+		for(i in h){
+			h[i]=h[i].reverse()
+		}
+		m=h.join("<br>")
+	}
+	g.innerHTML=m
+}
+g.style.visibility="visible";
+
+	function d(r){
+		var s=r.join(" ");
+		var q=/<br>|<br\/>|<br \/>/ig;
+		var b=s.split(q);
+if(b.length>1){
+s=b.pop()}
+g.innerHTML=s;
+return(g.clientHeight>j)}
+
+}
+
+function getPromptHeight(c){
+var b=0,a=0;
+if(typeof(c.innerWidth)=="number"){
+b=c.innerWidth;
+a=c.innerHeight}
+else{
+if(document.documentElement&&(document.documentElement.clientWidth||document.documentElement.clientHeight)){
+b=c.clientWidth;
+a=c.clientHeight}
+}
+return a}
+function printConsole(a){
+$("console").innerHTML=a}
+function interpretKey(b,c){
+if(isEditing){
+var a=b||window.event;
+if(a.type=="keydown"){
+	switch(a.keyCode){
+	case 27:submitScript();
+		a.returnValue = false;
+		a.preventDefault;
+        a.keyCode = 0;
+		//openFullscreen();
+	break;
+	case 116:
+		submitScript();
+		a.returnValue = false;
+		a.preventDefault;
+        a.keyCode = 0;
+		//openFullscreen();
+	break;
+	case 33:
+		PgUpPressed=1;
+		LocReloadStart();
+		if (scenN>-1){
+			scenN--;
+			if (scenN<1) scenN=10;
+			document.getElementById("promptinput").value=scenArr[scenN-1];
+			ShowScriptN();
+		}
+		a.returnValue = false;
+		a.preventDefault;
+        a.keyCode = 0;
+	break;
+	case 34:
+		PgDwnPressed=1;
+		LocReloadStart();
+		if (scenN>-1){
+			scenN++;
+			if (scenN>10) scenN=1;
+			document.getElementById("promptinput").value=scenArr[scenN-1];
+			ShowScriptN();
+		}
+		a.returnValue = false;
+		a.preventDefault;
+        a.keyCode = 0;
+	break;
+	default:
+	}
+	}
+if(a.type=="keyup"){
+	switch(a.keyCode){
+	case 33:
+		PgUpPressed=0;
+		clearTimeout(LocReloadTimer);
+	break;
+	case 34:
+		PgDwnPressed=0;
+		clearTimeout(LocReloadTimer);
+	break;
+	default:
+	}
+}
+	return false;
+}
+var a=b||window.event;
+if(a.type=="keydown"){
+switch(a.keyCode){
+//case 37:Controller.speedDown();
+//break;
+//case 39:Controller.speedUp();
+//break;
+//case 32:Controller.toggle();
+//break;
+case 38:Controller.rollBack(true);
+break;
+case 40:Controller.rollFwd(true);
+break;
+case 9:
+case 66:
+	Reverse();
+	a.returnValue = false;
+    a.keyCode = 0;
+break;
+case 27:
+case 32:
+case 116:
+		if (SpeedUpUp) {
+			Reverse();
+		} else if (SpeedDownUp) {
+			location.reload();
+		} else if (ToggleUp==0){ToggleUp=1;Controller.toggle();}
+		a.returnValue = false;
+		a.preventDefault;
+        a.keyCode = 0;
+		setTimeout("if (ToggleUp==1) ToggleUp=2;", 200);
+		//openFullscreen();
+break;
+case 39:
+case 34:
+		PgDwnPressed=1;
+		LocReloadStart();
+		Controller.speedUp();
+		a.returnValue = false;
+        a.keyCode = 0;
+		SpeedUpUp = 1;
+break;
+case 37:
+case 33:
+		PgUpPressed=1;
+		LocReloadStart();
+		Controller.speedDown();
+		a.returnValue = false;
+        a.keyCode = 0;
+		SpeedDownUp = 1;
+break;
+//case 66:location.reload();
+//		a.returnValue = false;
+//        a.keyCode = 0;
+//break;
+case 13:if (DoubleStop){Controller.reset();}
+		a.returnValue = false;
+        a.keyCode = 0;
+break;
+	default:
+	}
+}
+else{
+switch(a.keyCode){
+case 38:Controller.rollBack(false);
+break;
+case 40:Controller.rollFwd(false);
+break}
+}
+if(a.type=="keyup"){
+switch(a.keyCode){
+case 27:
+case 32:
+case 116:
+	switch(ToggleUp){
+		case 1:
+			ToggleUp=0;
+		break;
+		case 2:
+			ToggleUp=0;
+			if (promptState==1) {Controller.toggle();}
+		break}
+	break;
+case 37:
+case 33:
+	PgUpPressed=0;
+	clearTimeout(LocReloadTimer);
+	SpeedDownUp = 0;
+break;
+case 39:
+case 34:
+	PgDwnPressed=0;
+	clearTimeout(LocReloadTimer);
+	SpeedUpUp = 0;
+break;
+	default:
+	}
+}
+}
+
+function Reverse(){
+	if (promptState==0){
+		Controller.toggle();
+		if (Controller.actualspeed>0){
+			Controller.actualspeed=-Controller.actualspeed;
+		}
+	}
+	else{
+		if (Controller.actualspeed>0){
+			Controller.actualspeed=-Controller.actualspeed;
+		}
+		else{
+			Controller.toggle();
+		}
+	}
+}
+
+function handle(a){
+if(a<0){
+Controller.speedDown()}
+else{
+Controller.speedUp()}
+}
+function wheel(a){
+var scaa=$("initialscroll").checked;
+if(isEditing){
+return false}
+var b=0;
+if(!a){
+a=window.event}
+if(a.wheelDelta){
+b=a.wheelDelta/120}
+else{
+if(a.detail){
+b=-a.detail/3}
+}
+if(b){
+if (scaa){
+	if (b<0){
+		if (Controller.actualspeed<0){Controller.actualspeed=-Controller.actualspeed;}
+		Controller.stepDown();
+	}
+	else {
+		if (Controller.actualspeed>0){Controller.actualspeed=-Controller.actualspeed;}
+		Controller.stepDown();
+	}
+}
+else{
+handle(b)}}
+if(a.preventDefault){
+a.preventDefault()}
+a.returnValue=false}
+function checkOpenWindow(a){
+var b=false;
+if(a&&!a.closed){
+b=true;
+try{
+a.focus()}
+catch(c){
+b=false}
+}
+return(b)}
+var winInterval=null;
+function intervalCheck(){
+if(externControllerWindow==null||!checkOpenWindow(externControllerWindow)){
+restoreController()}
+else{
+winInterval=setTimeout(function(){
+intervalCheck()}
+,1000)}
+}
+function restoreController(){
+clearTimeout(winInterval);
+externControllerWindow.close();
+externControllerWindow=null;
+document.body.style.padding="2px 2px 78px 2px";
+$("controller").style.display="block"}
+function openController(){
+externControllerWindow=window.open("","_new","scrollbars=no,menubar=no,height="+window.innerHeight+",width="+window.innerWidth*parseInt(document.getElementById("initialfontoper").value)/parseInt(document.getElementById("initialfont").value)+",resizable=yes,toolbar=no,location=yes,status=yes");
+if (externControllerWindow.document.getElementById("prompter")==null){
+var a="%3Chtml%3E%0A%3Chead%3E%0A%0A%0A%09%3Cstyle%3E%0A%09%0Ahtml%2C%20body%2C%20div%2C%20span%2C%20iframe%2C%20h1%2C%20h2%2C%20p%2C%20a%2C%20font%2C%20img%20%7B%0A%0A%09margin%3A%200%3B%0A%0A%09padding%3A%200%3B%0A%0A%09border%3A%200%3B%0A%0A%09outline%3A%200%3B%0A%0A%09font-size%3A%20100%25%3B%0A%0A%09vertical-align%3A%20baseline%3B%0A%0A%09background%3A%20transparent%3B%0A%0A%7D%0A%0A%0Atable%20%7B%0A%0A%09height%3A40px%3B%0A%0A%7D%0A%0A%0Atr%20%7B%0A%0A%09height%3A46px%3B%0A%0A%7D%0A%0A%0Atd%20%7B%0A%0A%09text-align%3Acenter%3B%0A%0A%09border%3A2px%20solid%20%23888%3B%0A%0A%09background%3A%23c0caca%3B%0A%0A%09height%3A32px%3B%0A%0A%09-moz-border-radius%3A10px%3B%0A%0A%09-webkit-border-radius%3A10px%3B%0A%0A%09border-radius%3A10px%3B%0A%0A%7D%0A%0A%0Atr.tablehead%20%7B%0A%0A%09height%3A20px%3B%0A%0A%7D%0A%0A%0Atr.tablehead%20td%20%7B%0A%0A%09white-space%3A%20nowrap%3B%0A%0A%09font-size%3A20px%3B%0A%09%0A%09padding-left%3A%205%3B%0A%09%0A%20%20%20%20padding-right%3A%205px%3B%0A%0A%09border-top%3A1px%20solid%20white%3B%0A%0A%09border-left%3A1px%20solid%20white%3B%0A%0A%09border-right%3A1px%20solid%20white%3B%0A%0A%09border-bottom%3A0px%3B%0A%0A%09background%3Ablack%3B%0A%0A%09color%3A%23ccc%3B%0A%0A%09height%3A20px%3B%0A%0A%7D%0A%0Abody%20%7B%0A%0A%09background%3Ablack%3B%0A%0A%09/*padding%3A2px%202px%2078px%202px%3B%0A*/%0A%09overflow%3Ahidden%3B%0A%0A%09font-family%3A%20Helvetica%2C%20Arial%2C%20Verdana%3B%0A%0A%09font-size%3A20px%3B%0A%0A%09%0A%7D%0A%0A%0Aa%20%7B%0A%0A%09text-decoration%3A%20underline%3B%0A%0A%09color%3A%23ffdf60%3B%0A%0A%09font-weight%3Abold%3B%0A%0A%7D%0A%0A%0A.info%20%7B%0A%0A%09color%3Awhite%3B%0A%0A%09font-family%3AHelvetica%2C%20Arial%2C%20Verdana%3B%0A%0A%09border%3A2px%20solid%20%2304405C%3B%0A%0A%09background%3A%23222%3B%0A%0A%09width%3A%20700px%3B%0A%0A%09margin%3A10px%200px%2010px%20110px%3B%0A%0A%09padding%3A15px%3B%0A%0A%7D%0A%0A.Blur%20%7B%0A%09position%3A%20absolute%3B%0A%09%0A%09background-color%3A%20%23ffffff61%3B%0A%09%0A%09left%3A%200px%3B%0A%7D%0A%0A%23ActorBorder%20%7B%0A%0A%20%20%20%20position%3A%20absolute%3B%0A%0A%20%20%20%20border%3A%20solid%3B%0A%0A%20%20%20%20border-color%3A%20%23999%3B%0A%0A%20%20%20%20width%3A%200px%3B%0A%0A%20%20%20%20height%3A%200px%3B%0A%0A%20%20%20%20top%3A%200px%3B%0A%0A%20%20%20%20left%3A%200px%3B%0A%0A%7D%0A%0A%23preview%20%7B%0A%0A%09color%3Awhite%3B%0A%0A%09border%3A1px%20dashed%20grey%3B%0A%0A%09background%3Ablack%3B%0A%0A%09font-family%3A%20Helvetica%2C%20Arial%3B%0A%0A%09text-transform%3A%20uppercase%3B%0A%0A%09font-weight%3Abold%3B%0A%0A%09overflow%3Aauto%3B%0A%0A%7D%0A%0A%23spacer%20%7B%0A%0A%09display%3Ainline-block%3B%0A%0A%09width%3A100px%3B%0A%0A%09height%3A10px%3B%0A%0A%0A%7D%0A%0A%23topper%20%7B%0A%0A%09color%3A%23ffdf60%3B%0A%0A%09background%3A%2304405C%3B%0A%0A%09width%3A%20100%25%3B%0A%0A%09padding-top%3A10px%3B%0A%0A%09font-weight%3Abold%3B%0A%0A%09font-size%3A20px%3B%0A%0A%09text-decoration%3Anone%3B%0A%0A%09min-height%3A25px%3B%0A%0A%0A%7D%0A%0A%20%23topper%20a%20%7B%0A%0A%20%09padding%3A3px%2010px%3B%0A%0A%09%7D%0A%0A.container%20%7B%0A%0A%0A%09/*padding-left%3A10%25%3B%0A%0A%09padding-right%3A10%25%3B%0A*/%0A%0A%09width%3A100%25%3B%0A%0A%09height%3A100%25%3B%0A%0A%09overflow%3Aauto%3B%0A%0A%09z-index%3A200%3B%0A%0A%0A%09%7D%0A%0A%0A%0A.prompter%2C%23reference%20%7B%0A%0A%09position%3Arelative%3B%0A%0A%09overflow-wrap%3Abreak-word%3B%0A%0A%09display%3Ablock%3B%0A%0A%09font-size%3A25px%3B%0A%0A%09font-family%3A%20Helvetica%2C%20Arial%3B%0A%0A%09text-transform%3A%20uppercase%3B%0A%0A%09font-weight%3Abold%3B%0A%0A%09color%3A%23FFF%3B%0A%0A%09z-index%3A1%3B%0A%0A%09left%3A0px%3B%0A%0A%09top%3A0px%3B%0A%0A%09overflow%3Ahidden%3B%0A%0A%09margin-right%3A0px%3B%0A%0A%09%7D%0A%0A%0A.arrow%20%7B%0A%0A%20%20%20%20-webkit-user-select%3A%20none%3B%0A%20%20%20%20/*%20user-select%20--%20%u044D%u0442%u043E%20%u043D%u0435%u0441%u0442%u0430%u043D%u0434%u0430%u0440%u0442%u043D%u043E%u0435%20%u0441%u0432%u043E%u0439%u0441%u0442%u0432%u043E%20*/%0A%0A%20%20%20%20-moz-user-select%3A%20none%3B%0A%20%20%20%20/*%20%u043F%u043E%u044D%u0442%u043E%u043C%u0443%20%u043D%u0443%u0436%u043D%u044B%20%u043F%u0440%u0435%u0444%u0438%u043A%u0441%u044B%20*/%0A%0A%20%20%20%20-ms-user-select%3A%20none%3B%0A%09%0A%09cursor%3Apointer%3B%0A%0A%09position%3Aabsolute%3B%0A%0A%09color%3Awhite%3B%0A%0A%09top%3A50px%3B%0A%0A%09left%3A0px%3B%0A%0A%09z-index%3A999%3B%0A%0A%09color%3A%23bbb%3B%0A%0A%09font-size%3A100px%3B%0A%0A%09margin%3A0px%3B%0A%0A%09padding%3A0px%3B%0A%0A%09%7D%0A%0A%0Ap.demo%20%7B%0A%0A%09%09color%3Awhite%3B%0A%0A%09%09font-size%3A20px%3B%0A%0A%09%09border%3A%201px%20solid%20%23aaaaff%3B%0A%0A%09%09padding%3A5px%3B%0A%0A%09%09background%3Ablack%3B%0A%0A%09%09z-index%3A999%3B%0A%0A%09%09%7D%0A%0A%09%09%0A%23textentry%20%7B%0A%0A%09/*position%3Aabsolute%3B%0A%0A%09top%3A80px%3B%0A%0A%09left%3A100px%3B%0A*/%0A%09font-family%3A%20Helvetica%2C%20Arial%2C%20Verdana%3B%0A%0A%09font-size%3A20px%3B%0A%0A%09color%3Awhite%3B%0A%0A%09background%3A%23555%3B%0A%0A%09padding%3A5px%3B%0A%0A%09width%3A85%25%3B%0A%0A%0A%7D%0A%0A%0A%23textentry%20%20textarea%20%7B%0A%0A%09border%3A0px%3B%0A%0A%09padding%3A5px%3B%0A%0A%09width%3A100%25%3B%0A%0A%0A%7D%0A%0A%0A%23textentry%20%20fieldset%20%7B%0A%0A%09background%3A%23333%3B%0A%0A%09border%3A2px%20solid%20white%3B%0A%0A%09padding%3A6px%3B%0A%0A%09margin-top%3A5px%3B%0A%0A%7D%0A%0A%0A%23textentry%20%20fieldset%20label%20%7B%0A%0A%09font-weight%3Abold%3B%0A%0A%09margin-left%3A20px%3B%0A%0A%7D%0A%0Ainput%20%7B%0A%0A%09font-size%3A20px%3B%0A%0A%7D%0A%0A%0A%23textentry%20%20fieldset%20a%20%7B%0A%0A%09text-decoration%3Anone%3B%0A%0A%09font-family%3A%20Helvetica%2C%20Arial%2C%20Verdana%3B%0A%0A%09font-size%3A28px%3B%0A%0A%09font-weight%3Abold%3B%0A%0A%09text-align%3Acenter%3B%0A%0A%09color%3Awhite%3B%0A%0A%09padding%3A5px%200px%3B%0A%0A/*%09border-top%3A1px%20solid%20white%3B%0A%0A%09border-left%3A1px%20solid%20white%3B%0A%0A%09border-bottom%3A2px%20solid%20%23aaa%3B%0A%0A%09border-right%3A2px%20solid%20%23aaa%3B%0A%0A%09margin-top%3A15px%3B%0A%0A%09background%3A%23C99400%3B%0A*/%0A%09display%3Ablock%3B%0A%0A%09width%3A100%25%3B%0A%0A%7D%0A%0A%0A%23textentry%20%20fieldset%20a.gButton%20%7B%0A%0A%09color%3Ablack%3B%0A%0A%7D%0A%0A%0A.counter%20%7B%0A%0A%09font-family%3A%20Helvetica%2C%20Arial%2C%20Verdana%3B%0A%0A%09color%3Awhite%3B%0A%0A%09font-size%3A35px%3B%0A%0A%09font-weight%3Abold%3B%0A%0A%0A%09background%3A%23c0caca%3B%0A%0A%09width%3A100%25%3B%0A%0A%09height%3A100%25%3B%0A%0A%09text-align%3Acenter%3B%0A%0A%7D%0A%0A%0A.gButton%2C%20%23controller%20a.gButton%20%7B%0A%0A%09font-family%3A%20Helvetica%2C%20Arial%2C%20Verdana%3B%0A%0A%09color%3Ablack%3B%0A%0A%09font-size%3A25px%3B%0A%0A%09font-weight%3Abold%3B%0A%0A%09background%3A%23c0caca%3B%0A%0A%09-moz-border-radius%3A10px%3B%0A%0A%09-webkit-border-radius%3A10px%3B%0A%0A%09border-radius%3A10px%3B%0A%0A%09padding-left%3A%208px%3B%0A%09%0A%20%20%20%20padding-right%3A%208px%3B%0A%7D%0A%0A%0A%0A%23controller%20%7B%0A%0A%09height%3A136px%3B%0A%0A%09bottom%3A0px%3B%0A%0A%09position%3Afixed%3B%0A%0A%09border-top%3A1px%20dashed%20grey%3B%0A%0A%09width%3A98%25%3B%0A%0A%09z-index%3A999%3B%0A%0A%09background%3Ablack%3B%0A%0A%7D%0A%0A%0A%23controller%20a%20%7B%0A%0A%09text-decoration%3Anone%3B%0A%0A%09font-family%3A%20Helvetica%2C%20Arial%2C%20Verdana%3B%0A%0A%09font-size%3A14px%3B%0A%0A%09font-weight%3Abold%3B%0A%0A%09color%3Awhite%3B%0A%0A%09padding%3A5px%3B%0A%0A%7D%0A%0A%0A%23controller%20span%20%7B%0A%0A%09margin-left%3A20px%3B%0A%0A%7D%0A%0A%0A%23console%20%7B%0A%0A%09display%3Ablock%3B%0A%0A%09position%3Aabsolute%3B%0A%0A%09top%3A0px%3B%0A%0A%09right%3A0px%3B%0A%0A%09color%3Awhite%3B%0A%0A%09background%3Ablack%3B%0A%0A%09margin%3A10px%3B%0A%0A%09padding%3A5px%3B%0A%0A%7D%0A%0A%0A.pause%20%7B%0A%0A%09color%3A%23444%3B%0A%0A%7D%0A%0A%0A.hl%20%7B%0A%0A%09color%3A%23FFFC40%3B%0A%0A%7D%0A%0A%0A%0A%0A%0A%23textcontrols%20%7B%0A%0Awidth%3A100%25%3B%0A%0Abackground%3A%20%23444%3B%0A%0Apadding%3A5px%200px%3B%0A%0A%0A%7D%0A%0A%0A%09%3C/style%3E%0A%3Ctitle%3E%u041E%u043A%u043D%u043E%20%u0443%u043F%u0440%u0430%u0432%u043B%u0435%u043D%u0438%u044F%3C/title%3E%0A%0A%3C/head%3E%0A%0A%3Cbody%20onkeydown%3D%27interpretKey%28event%29%27%20onkeyup%3D%27interpretKey%28event%29%27%3E%0A%3Cdiv%20class%3D%22container%22%20id%3D%22container%22%20style%3D%22overflow%3A%20auto%3B%22%3E%0A%3Cdiv%20class%3D%22prompter%22%20id%3D%22prompter%22%20style%3D%22display%3A%20block%3B%20text-transform%3A%20none%3Bvisibility%3A%20visible%3B%20color%3A%20rgb%28255%2C%20255%2C%20255%29%3B%22%3E%3C/div%3E%0A%0A%3Cdiv%20id%3D%22controller%22%3E%0A%3Ctable%20cellspacing%3D%225%22%3E%3Ctbody%20id%3D%22contrtab%22%3E%3Ctr%20class%3D%22tablehead%22%3E%0A%3Ctd%20colspan%3D%224%22%3E%u0412%u043E%u0441%u043F%u0440%u043E%u0438%u0437%u0432%u0435%u0434%u0435%u043D%u0438%u0435%3C/td%3E%0A%3Ctd%20colspan%3D%223%22%3E%u0421%u043A%u043E%u0440%u043E%u0441%u0442%u044C%3C/td%3E%0A%3Ctd%20colspan%3D%223%22%3E%u0428%u0440%u0438%u0444%u0442%20%u0430%u043A%u0442%u0435%u0440%u0430%3C/td%3E%0A%3Ctd%20colspan%3D%223%22%3E%u0428%u0440%u0438%u0444%u0442%20%u043E%u043F%u0435%u0440%u0430%u0442%u043E%u0440%u0430%3C/td%3E%0A%3Ctd%20colspan%3D%223%22%3E%u041E%u0431%u043D%u043E%u0432%u0438%u0442%u044C%3C/td%3E%0A%0A%3C/tr%3E%3Ctr%3E%0A%3Ctd%20style%3D%22min-width%3A%2045px%22%3E%0A%3Ca%20href%3D%22javascript%3Aopener.Controller.toggle%28%29%22%20title%3D%22%u0421%u0442%u0430%u0440%u0442%20-%20%5BEsc%5D%22%20class%3D%22gButton%22%20id%3D%22play%22%3E%u25BA%3C/a%3E%0A%3C/td%3E%3Ctd%3E%0A%3Ca%20href%3D%22javascript%3Avoid%280%29%22%20onmousedown%3D%22javascript%3Aopener.Controller.rollBack%28true%29%22%20onmouseup%3D%22javascript%3Aopener.Controller.rollBack%28false%29%22%20title%3D%22%u041D%u0430%u0437%u0430%u0434%20-%20%5B%u0421%u0442%u0440%u0435%u043B%u043A%u0430%20%u0432%u0432%u0435%u0440%u0445%5D%22%20class%3D%22gButton%22%3E%u25C4%u25C4%3C/a%3E%0A%3C/td%3E%3Ctd%3E%0A%3Ca%20href%3D%22javascript%3Avoid%280%29%22%20onmousedown%3D%22javascript%3Aopener.Controller.rollFwd%28true%29%22%20onmouseup%3D%22javascript%3Aopener.Controller.rollFwd%28false%29%22%20title%3D%22%u0412%u043F%u0435%u0440%u0435%u0434%20-%20%5B%u0421%u0442%u0440%u0435%u043B%u043A%u0430%20%u0432%u043D%u0438%u0437%5D%22%20class%3D%22gButton%22%3E%u25BA%u25BA%3C/a%3E%0A%3C/td%3E%3Ctd%20style%3D%22min-width%3A%2045px%22%3E%0A%3Ca%20href%3D%22javascript%3Aopener.Controller.reset%28%29%22%20title%3D%22%u0421%u0442%u043E%u043F%22%20class%3D%22gButton%22%3E%u25A0%3C/a%3E%0A%3C/td%3E%3Ctd%3E%0A%3Ca%20href%3D%22javascript%3Aopener.Controller.speedDown%28%29%22%20title%3D%22%u0417%u0430%u043C%u0435%u0434%u043B%u0438%u0442%u044C%20-%20%5B%u0421%u0442%u0440%u0435%u043B%u043A%u0430%20%u0432%u043B%u0435%u0432%u043E%20/%20%u041A%u043E%u043B%u0435%u0441%u0438%u043A%u043E%20%u0432%u043D%u0438%u0437%5D%22%20class%3D%22gButton%22%3E-%3C/a%3E%0A%3C/td%3E%3Ctd%3E%0A%3Clabel%20class%3D%22counter%22%20id%3D%22currentspeed%22%3E2%3C/label%3E%0A%3C/td%3E%3Ctd%3E%0A%3Ca%20href%3D%22javascript%3Aopener.Controller.speedUp%28%29%22%20title%3D%22%u0423%u0441%u043A%u043E%u0440%u0438%u0442%u044C%20-%20%5B%u0421%u0442%u0440%u0435%u043B%u043A%u0430%20%u0432%u043F%u0440%u0430%u0432%u043E%20/%20%u041A%u043E%u043B%u0435%u0441%u0438%u043A%u043E%20%u0432%u0432%u0435%u0440%u0445%5D%22%20class%3D%22gButton%22%3E+%3C/a%3E%0A%3C/td%3E%3Ctd%3E%0A%3Ca%20href%3D%22javascript%3Avoid%280%29%22%20onmousedown%3D%22javascript%3Aopener.Controller.fontDown%28%29%22%20onmouseup%3D%22javascript%3Aopener.Controller.fontstop%28%29%22%20class%3D%22gButton%22%3E%u25BC%3C/a%3E%0A%3C/td%3E%3Ctd%3E%0A%3Clabel%20class%3D%22counter%22%20id%3D%22currentfont%22%3ENaN%3C/label%3E%0A%3C/td%3E%3Ctd%3E%0A%3Ca%20href%3D%22javascript%3Avoid%280%29%22%20onmousedown%3D%22javascript%3Aopener.Controller.fontUp%28%29%22%20onmouseup%3D%22javascript%3Aopener.Controller.fontstop%28%29%22%20class%3D%22gButton%22%3E%u25B2%3C/a%3E%0A%3C/td%3E%0A%3Ctd%3E%0A%3Ca%20href%3D%22javascript%3Avoid%280%29%22%20onmousedown%3D%22javascript%3AfontDown%28%29%22%20onmouseup%3D%22javascript%3Afontstop%28%29%22%20class%3D%22gButton%22%3E%u25BC%3C/a%3E%0A%3C/td%3E%3Ctd%3E%0A%3Clabel%20class%3D%22counter%22%20id%3D%22currentoperfont%22%3ENaN%3C/label%3E%0A%3C/td%3E%3Ctd%3E%0A%3Ca%20href%3D%22javascript%3Avoid%280%29%22%20onmousedown%3D%22javascript%3AfontUp%28%29%22%20onmouseup%3D%22javascript%3Afontstop%28%29%22%20class%3D%22gButton%22%3E%u25B2%3C/a%3E%0A%3C/td%3E%0A%3Ctd%3E%0A%3Ca%20href%3D%22javascript%3Avoid%280%29%22%20onclick%3D%22javascript%3Aopener.location.reload%28%29%22%20title%3D%22%u041E%u0431%u043D%u043E%u0432%u0438%u0442%u044C%22%20class%3D%22gButton%22%3E%u21BB%3C/a%3E%0A%3C/td%3E%0A%3C/tr%3E%3Ctr%3E%0A%3Ctd%20colspan%3D%2211%22%3E%0A%3Ctextarea%20id%3D%22ActorMessage%22%20style%3D%22width%3A%2098%25%3Bfont-size%3A%2016px%3B%22%3E%u0421%u043E%u043E%u0431%u0449%u0435%u043D%u0438%u0435%20%u0434%u0438%u043A%u0442%u043E%u0440%u0443%3C/textarea%3E%0A%3C/td%3E%0A%3Ctd%20colspan%3D%222%22%3E%0A%3Ca%20href%3D%22javascript%3Avoid%280%29%22%20onclick%3D%22javascript%3ASendMes%28%29%22%20title%3D%22%u0421%u043E%u043E%u0431%u0449%u0435%u043D%u0438%u0435%20%u0434%u0438%u043A%u0442%u043E%u0440%u0443%22%20class%3D%22gButton%22%3E%u2192%3C/a%3E%0A%3C/td%3E%0A%3Ctd%3E%0A%3Ca%20href%3D%22javascript%3Avoid%280%29%22%20onclick%3D%22javascript%3ATextInput%28%29%22%20title%3D%22%u0412%u0432%u0435%u0441%u0442%u0438%20%u0442%u0435%u043A%u0441%u0442%22%20class%3D%22gButton%22%3E%u0422%u0415%u041A%u0421%u0422%3C/a%3E%0A%3C/td%3E%0A%3C/tr%3E%0A%3C/tbody%3E%3C/table%3E%0A%0A%0A%3C/div%3E%0A%3Cdiv%20id%3D%22UpperBlur%22%20style%3D%22top%3A0px%3B%22%20class%3D%22Blur%22%3E%0A%3C/div%3E%0A%3Cdiv%20id%3D%22ActorBorder%22%3E%0A%3C/div%3E%0A%3Cdiv%20id%3D%22BottomBlur%22%20style%3D%22height%3A100%25%3B%22%20class%3D%22Blur%22%3E%0A%3C/div%3E%0A%0A%0A%0A%20%3Cscript%3E%0A%09var%20fsize%3D0%3B%0A%09var%20ftimer%3D0%3B%0A%09var%20refresh%3D1%3B%0A%09var%20timerID%3D0%3B%0A%09var%20possibleScrollTop%3D0%3B%0A%09var%20LastPossibleScrollTop%3D0%3B%0A%09var%20LastSentScrollTop%3D0%3B%0A%09var%20possibleWindowWidth%3D0%3B%0A%09var%20m%3B%09%0A%09%0A%09upd%3Dfunction%28%29%7B%0A%09%09if%20%28refresh%3D%3D1%29%20%7Brefr%28%29%3B%7D%0A%09%09document.getElementById%28%22prompter%22%29.style.width%3D100*%28opener.document.getElementById%28%22container%22%29.clientWidth-parseInt%28opener.document.getElementById%28%22prompter%22%29.style.paddingRight%29-parseInt%28opener.document.getElementById%28%22prompter%22%29.style.paddingLeft%29%29*parseInt%28document.getElementById%28%22prompter%22%29.style.fontSize%29/parseInt%28opener.document.getElementById%28%22prompter%22%29.style.fontSize%29/document.getElementById%28%22container%22%29.clientWidth+%22%25%22%3B%0A%09%09%0A%09%09possibleScrollTop%3Dopener.document.getElementById%28%22container%22%29.scrollTop*document.getElementById%28%22container%22%29.scrollHeight/opener.document.getElementById%28%22container%22%29.scrollHeight%3B%0A%09%09if%20%28LastPossibleScrollTop%21%3DpossibleScrollTop%29%7B%0A%09%09%09LastPossibleScrollTop%3DpossibleScrollTop%3B%0A%09%09%09document.getElementById%28%22container%22%29.scrollTop%3DpossibleScrollTop%3B%0A%09%09%09if%20%28document.getElementById%28%22container%22%29.scrollTop%21%3DpossibleScrollTop%29%7B%0A%09%09%09%09document.getElementById%28%22ActorBorder%22%29.style.top%3DpossibleScrollTop-document.getElementById%28%22container%22%29.scrollTop%3B%0A%09%09%09%7D%0A%09%09%09else%7B%0A%09%09%09%09document.getElementById%28%22ActorBorder%22%29.style.top%3D0%3B%0A%09%09%09%7D%0A%09%09%7D%0A%09%09else%7B%0A%09%09%09if%20%28%28Math.abs%28document.getElementById%28%22container%22%29.scrollTop+parseInt%28document.getElementById%28%22ActorBorder%22%29.style.top%29-possibleScrollTop%29%3E1%29%26%26%28Math.abs%28LastSentScrollTop-%28document.getElementById%28%22container%22%29.scrollTop*opener.document.getElementById%28%22container%22%29.scrollHeight/document.getElementById%28%22container%22%29.scrollHeight%29%29%3E1%29%29%7B%0A%09%09%09%09LastSentScrollTop%3Ddocument.getElementById%28%22container%22%29.scrollTop*opener.document.getElementById%28%22container%22%29.scrollHeight/document.getElementById%28%22container%22%29.scrollHeight%3B%0A%09%09%09%09opener.lastTop%3DLastSentScrollTop%3B%0A%09%09%09%09opener.document.getElementById%28%22container%22%29.scrollTop%3DLastSentScrollTop%3B%0A%09%09%09%7D%0A%09%09%7D%0A%09%09%0A%09%09possibleWindowWidth%3Dopener.window.innerWidth*parseInt%28document.getElementById%28%22currentoperfont%22%29.innerHTML%29/parseInt%28document.getElementById%28%22currentfont%22%29.innerHTML%29+25%3B%0A%09%09if%20%28window.innerWidth%3C%28document.getElementById%28%22contrtab%22%29.clientWidth%29%29%7Bwindow.resizeTo%28document.getElementById%28%22contrtab%22%29.clientWidth+25%2Cwindow.outerHeight%29%7D%0A%09%09else%20if%20%28%28possibleWindowWidth%3E%28document.getElementById%28%22contrtab%22%29.clientWidth+25%29%29%26%26%28window.outerWidth%21%3DpossibleWindowWidth%29%29%7B%0A%09%09%09window.resizeTo%28possibleWindowWidth%2Cwindow.outerHeight%29%7D%0A%09%09document.getElementById%28%22ActorBorder%22%29.style.width%3Ddocument.getElementById%28%22prompter%22%29.style.width%3B%0A%09%09document.getElementById%28%22ActorBorder%22%29.style.height%3Dopener.document.getElementById%28%22container%22%29.clientHeight*document.getElementById%28%22container%22%29.scrollHeight/opener.document.getElementById%28%22container%22%29.scrollHeight%3B%0A%09%09document.getElementById%28%22UpperBlur%22%29.style.width%3D%28document.getElementById%28%22ActorBorder%22%29.clientWidth+6%29+%22px%22%3B%0A%09%09document.getElementById%28%22BottomBlur%22%29.style.width%3D%28document.getElementById%28%22ActorBorder%22%29.clientWidth+6%29+%22px%22%3B%0A%09%09document.getElementById%28%22BottomBlur%22%29.style.top%3D%28parseInt%28document.getElementById%28%22ActorBorder%22%29.style.height%29+parseInt%28document.getElementById%28%22ActorBorder%22%29.style.top%29+6%29+%22px%22%3B%0A%09%09document.getElementById%28%22UpperBlur%22%29.style.height%3Ddocument.getElementById%28%22ActorBorder%22%29.style.top%3B%0A%09%09document.getElementById%28%22prompter%22%29.style.paddingLeft%3D%28%28100-parseInt%28document.getElementById%28%22prompter%22%29.style.width%29%29/2%29+%22%25%22%3B%0A%09%09document.getElementById%28%22ActorBorder%22%29.style.left%3D%28parseInt%28document.getElementById%28%22prompter%22%29.style.paddingLeft%29-1%29+%22%25%22%3B%0A%09%09document.getElementById%28%22UpperBlur%22%29.style.left%3Ddocument.getElementById%28%22ActorBorder%22%29.style.left%3B%0A%09%09document.getElementById%28%22BottomBlur%22%29.style.left%3Ddocument.getElementById%28%22ActorBorder%22%29.style.left%3B%0A%09%09if%20%28%28possibleWindowWidth%3Cdocument.getElementById%28%22contrtab%22%29.clientWidth%29%26%26%28document.getElementById%28%22container%22%29.scrollHeight%3D%3Ddocument.getElementById%28%22container%22%29.clientHeight%29%29%7B%0A%09%09%09fsize%3Dfsize+1%3B%0A%09%09%09document.getElementById%28%22prompter%22%29.style.fontSize%3Dfsize+%22px%22%3B%0A%09%09%09updateFontSize%28%29%3B%0A%09%09%7D%0A%09%7D%0A%09%0A%09document.onmouseup%20%3D%20function%28%29%20%7Bfontstop%28%29%7D%3B%0A%09document.getElementById%28%22ActorBorder%22%29.style.top%3D0%3B%0A%09window.addEventListener%28%22wheel%22%2C%20e%20%3D%3E%20%7B%20e%20%3D%20e%20%7C%7C%20window.event%3B%20document.getElementById%28%22container%22%29.scrollTop+%3D%28e.deltaY%20%7C%7C%20e.detail%20%7C%7C%20e.wheelDelta%29/2%3B%7D%29%0A%09%0A%09refr%3Dfunction%28%29%7B%0A%09%09refresh%3D0%3B%0A%09%09document.getElementById%28%22prompter%22%29.style.fontSize%3Dopener.document.getElementById%28%22initialfontoper%22%29.value%3B%0A%09%09fsize%3DparseInt%28opener.document.getElementById%28%22initialfontoper%22%29.value%29%3B%0A%09%09document.getElementById%28%22currentoperfont%22%29.innerHTML%3Dfsize%3B%0A%09%09opener.Controller.init%28%29%3B%0A%09%09m%3Dopener.document.getElementById%28%22prompter%22%29.innerHTML.replace%28/%5C%3Cspan%20id%3D%5C%22endmarker%5C%22%5C%3E%5C%3Cbr%5C%3E%5C%3Cbr%5C%3E%5C%3Cbr%5C%3E%5C%3Cbr%5C%3E%5C%3Cbr%5C%3E%5C%3C%5C/span%5C%3E/g%2C%22%3Cbr%3E%3Cbr%3E%3Cbr%3E%3Cbr%3E%3Cbr%3E%22%29%3B%0A%09%09document.getElementById%28%22prompter%22%29.innerHTML%3Dm%3B%09%0A%09%7D%0A%09%0A%09updateFontSize%3Dfunction%28%29%7B%0A%09%09fsize%3DparseInt%28document.getElementById%28%22prompter%22%29.style.fontSize%29%3B%0A%09%09document.getElementById%28%22currentoperfont%22%29.innerHTML%3Dfsize%3B%0A%09%09opener.document.getElementById%28%27initialfontoper%27%29.value%3Dfsize%3B%0A%09%7D%0A%09%0A%09fontstop%3Dfunction%28%29%7B%0A%09%09clearInterval%28ftimer%29%3B%0A%09%09ftimer%3D0%3B%0A%09%7D%0A%0A%09fontDown%3Dfunction%28%29%7B%0A%09%09fsize%3Dfsize-1%3B%0A%09%09document.getElementById%28%22prompter%22%29.style.fontSize%3Dfsize+%22px%22%3B%0A%09%09updateFontSize%28%29%3B%0A%09%09if%28%21ftimer%29%7B%0A%09%09%09ftimer%3DsetInterval%28%22fontDown%28%29%22%2C100%29%0A%09%09%7D%0A%09%7D%0A%0A%09fontUp%3Dfunction%28%29%7B%0A%09%09fsize%3Dfsize+1%3B%0A%09%09document.getElementById%28%22prompter%22%29.style.fontSize%3Dfsize+%22px%22%3B%0A%09%09updateFontSize%28%29%3B%0A%09%09if%28%21ftimer%29%7B%0A%09%09%09ftimer%3DsetInterval%28%22fontUp%28%29%22%2C100%29%0A%09%09%7D%0A%09%7D%0A%09%0A%09SendMes%3Dfunction%28%29%7B%0A%09%09opener.ShowMessageT%28document.getElementById%28%22ActorMessage%22%29.value%29%3B%0A%09%7D%0A%09%0A%09TextInput%3Dfunction%28%29%7B%0A%09%09var%20newText%20%3D%20prompt%28%22%u0412%u0432%u0435%u0434%u0438%u0442%u0435%20%u0442%u0435%u043A%u0441%u0442%22%2C%22%u0412%u0441%u0442%u0430%u0432%u044C%u0442%u0435%20%u0442%u0435%u043A%u0441%u0442%20%u0432%20%u0434%u0430%u043D%u043D%u043E%u0435%20%u043F%u043E%u043B%u0435.%22%29%3B%0A%09%09opener.document.getElementById%28%22promptinput%22%29.value%3DnewText%3B%0A%09%09opener.submitScript%28%29%3B%0A%09%09refresh%3D1%3B%0A%09%7D%0A%09%0A%09function%20interpretKey%28b%2Cc%29%7B%0A%09%09var%20a%3Db%7C%7Cwindow.event%3B%0A%09%09if%28%28a.type%3D%3D%22keydown%22%29%7C%7C%28a.type%3D%3D%22keyup%22%29%29%7B%0A%09%09%09switch%28a.keyCode%29%7B%0A%09%09%09case%2066%3A%0A%09%09%09case%2032%3A%0A%09%09%09case%2013%3A%0A%09%09%09break%3B%0A%09%09%09default%3A%0A%09%09%09%09opener.interpretKey%28b%2Cc%29%3B%0A%09%09%09%7D%0A%09%09%7D%0A%09%09else%7B%0A%09%09%09opener.interpretKey%28b%2Cc%29%3B%0A%09%09%7D%0A%09%7D%0A%0A%09clearInterval%28timerID%29%3B%0A%09timerID%3DsetInterval%28%22upd%28%29%22%2Copener.document.getElementById%28%22initialtupdate%22%29.value%29%3B%0A%3C/script%3E%0A%3C/body%3E%0A%3C/html%3E";
+externControllerWindow.document.write(unescape(a));}
+externControllerWindow.refresh=1;
+document.body.style.padding="2px";
+$("controller").style.display="none";
+winInterval=setTimeout(function(){
+intervalCheck()}
+,1000)}
+var Controller=new PromptController();
+var isCaps="";
+var isEditing=true;
+
+function submitScript(a){
+//openFullscreen();
+//setCookie();
+if(a){
+WebSockStop();
+isEditing=true;
+$("container").style.overflow="auto";
+document.body.style.padding="0";
+$("textentry").style.display="block";
+$("controller").style.display="none";
+$("topper").style.display="block";
+$("prompter").innerHTML=""}
+else{
+WebSockStart();
+isEditing=false;
+formatit();
+document.getElementById("prompter").style.paddingRight=parseInt($("initialfields").value);
+document.getElementById("prompter").style.paddingLeft=parseInt($("initialfields").value);
+}
+if(!isEditing){
+
+if(window.addEventListener){
+window.addEventListener("DOMMouseScroll",wheel,false)}
+window.onmousewheel=document.onmousewheel=wheel}
+else{
+if(window.addEventListener){
+window.removeEventListener("DOMMouseScroll",wheel,false)}
+window.onmousewheel=document.onmousewheel=null}
+
+if (Auto_Oper && !isEditing){openController();}
+}
+function previewText(c){
+var pp=$("prompter");
+var b=$("preview");
+b.style.display="none";
+b.style.textTransform=$("initialcap").checked?"uppercase":"none";
+b.style.fontSize=parseInt($("initialfont").value)+"px";
+document.getElementById("ProgMessage").style.fontSize=b.style.fontSize;
+b.style.color=$("initialcolor").value;
+pp.style.color=$("initialcolor").value;
+$("aim").style.backgroundColor=$("initialaimcolor").value;
+$("aim-v").style.backgroundColor=$("initialaimcolor").value;
+$("arrow").style.color=$("initialtrianglecolor").value;
+$("arrow").style.top=$("initialarrow").value;	
+$("aim").style.top=parseInt($("initialarrow").value)+56;
+$("aim-v").style.left=$("initialarrowleft").value;
+if (document.getElementById("initialpanel").checked){
+	Show_Panel=1;
+}
+else{
+	Show_Panel=0;
+}
+if (document.getElementById("initialoper").checked){
+	Auto_Oper=1;
+}
+else{
+	Auto_Oper=0;
+}
+if (document.getElementById("initialmouse").checked){
+	Mouse=1;
+}
+else{
+	Mouse=0;
+}
+
+if (document.getElementById("initialtriangle").checked){
+	$("arrow").style.display="block";
+}
+else
+{
+	$("arrow").style.display="none";
+}
+if (document.getElementById("initialaim").checked){
+	$("aim").style.display="block";
+	$("aim-v").style.display="block";
+}
+else
+{
+	$("aim").style.display="none";
+	$("aim-v").style.display="none";
+}
+if (Mouse){
+	b.style.cursor="auto";
+}
+else{
+	b.style.cursor="none";
+}
+var a=$("initialflip").checked;
+if(a){
+document.getElementById("ProgMessage").style.transform="scale(-1,1)";
+document.getElementById("ProgMessage").style.webkitTransform="scale(-1,1)";
+b.style.transform="scale(-1,1)";
+b.style.webkitTransform="scale(-1,1)";
+}
+else{
+document.getElementById("ProgMessage").style.transform="scale(1,1)";
+document.getElementById("ProgMessage").style.webkitTransform="scale(1,1)";
+b.style.transform="scale(1,1)";
+b.style.webkitTransform="scale(1,1)";
+}
+b.style.fontFamily="Arial, Helvetica";
+if ($("initialbreak").checked){
+	b.innerHTML="Текст<br>суфлера";
+}
+else{
+	b.innerHTML="Текст суфлера";
+}
+b.style.textAlign="center";
+if(c){
+checkFlipHighlight()}
+b.style.display="block"}
+function replaceHL(b,a){
+b.value=b.value.replace(a,"");
+if(b.value.match(a)){
+replaceHL(b,a)}
+}
+function checkFlipHighlight(){
+var b=document.createpromptform.initialflip.checked;
+var d=document.createpromptform.promptinput;
+var a=/\[hl]|\[\/hl]/ig;
+var c=d.value;
+if(b&&c.match(a)){
+if(confirm("It looks like you're trying to put highlights into a flipped prompter.\nThis feature is not supported in flipped mode and may result in undesirable side effects.  Would you like to remove the highlights?")){
+replaceHL(d,a)}
+}
+}
+;
+		</script>
+</head> 
+
+<body onkeydown="interpretKey(event)" onkeyup="interpretKey(event)" style="padding: 0px;">
+
+<div class="arrow" id="arrow" style="top: 500px;">►</div>
+<div class="aim" id="aim"></div>
+<div class="aim-v" id="aim-v"></div>
+<div class="container" id="container" style="overflow: auto;">
+<div id="topper" style="display: block;"><span id="spacer"></span>
+<a href="https://www.kingview.ru/" title="На главную">На главную</a>
+<a href="https://www.kingview.ru/Prompter.zip" title="Скачать программу">Скачать программу</a>
+<a style="color:#999;" href="https://www.mozilla.org/ru/firefox/">Скачать Firefox</a>
+</div>
+
+<div id="textentry" name="textentry" class="info" style="display: block;">
+<h2 style="font-size:30px;padding-top: 5px;padding-bottom: 10px;">Программа KingView v_1.063</h2>
+<div id="textcontrols">
+<button id="replace" style="font-size: 20;background: #ffdf60;"><b>Выделить</b></button>
+</div>
+
+<input type="hidden" name="pedit">
+
+<iframe id="myhtml" src="Scen.txt" hidden="true"></iframe>
+<iframe id="myhtml1" src="Scen1.txt" hidden="true"></iframe>
+<iframe id="myhtml2" src="Scen2.txt" hidden="true"></iframe>
+<iframe id="myhtml3" src="Scen3.txt" hidden="true"></iframe>
+<iframe id="myhtml4" src="Scen4.txt" hidden="true"></iframe>
+<iframe id="myhtml5" src="Scen5.txt" hidden="true"></iframe>
+<iframe id="myhtml6" src="Scen6.txt" hidden="true"></iframe>
+<iframe id="myhtml7" src="Scen7.txt" hidden="true"></iframe>
+<iframe id="myhtml8" src="Scen8.txt" hidden="true"></iframe>
+<iframe id="myhtml9" src="Scen9.txt" hidden="true"></iframe>
+<iframe id="myhtml10" src="Scen10.txt" hidden="true"></iframe>
+
+ <textarea id="promptinput" style="font-size:20px;" name="promptinput" rows="20" cols="80"></textarea>
+<br>
+<fieldset>
+<h2 style="font-size:30px;padding-top: 5px;padding-bottom: 15px;">Настройки:</h2>
+<label>Шрифт:
+<input type="text" id="initialfont" name="initialfont" value="120" size="8" onchange="previewText()"></label>
+<label>Скорость:
+<input type="text" id="initialspeed" name="initialspeed" value="15" size="8" onchange="previewText()"></label>
+<label>Цвет текста:
+<input type="text" id="initialcolor" name="initialcolor" value="#FFF" size="8" data-jscolor="{}" onchange="previewText()"></label>
+<label>Поля:
+<input type="text" id="initialfields" name="initialfields" value="0" size="8" onchange="previewText()"></label>
+<label>Отразить текст
+<input type="checkbox" checked="true" name="initialflip" id="initialflip" onclick="previewText()"></label>
+<label>Заглавные буквы
+<input type="checkbox" checked="false" name="initialcap" id="initialcap" onchange="previewText()"></label>
+<label>Перенос по словам
+<input type="checkbox" checked="false" name="initialbreak" id="initialbreak" onclick="previewText()"></label>
+<label>Панель управления
+<input type="checkbox" checked="false" name="initialpanel" id="initialpanel" onclick="previewText()"></label>
+<label>Экран оператора
+<input type="checkbox" checked="false" name="initialoper" id="initialoper" onclick="previewText()"></label>
+<label>Шрифт оператора:
+<input type="text" id="initialfontoper" name="initialfontoper" value="60" size="8" onchange="previewText()"></label>
+<label>Т обновления:
+<input type="text" id="initialtupdate" name="initialtupdate" value="30" size="8" onchange="previewText()"></label>
+<label>Указатель мыши
+<input type="checkbox" checked="false" name="initialmouse" id="initialmouse" onclick="previewText()"></label>
+<label>Перемотка колесиком
+<input type="checkbox" checked="true" name="initialscroll" id="initialscroll" onclick="previewText()"></label>
+<label>Указатель-Y:
+<input type="text" id="initialarrow" name="initialarrow" value="500" size="8" onchange="previewText()"></label>
+<label>Указатель-X:
+<input type="text" id="initialarrowleft" name="initialarrowleft" value="500" size="8" onchange="previewText()"></label>
+<label>Треугольник:
+<input type="text" id="initialtrianglecolor" name="initialtrianglecolor" value="#FFF" size="8" data-jscolor="{}" onchange="previewText()">
+<input type="checkbox" checked="true" name="initialtriangle" id="initialtriangle" onclick="previewText()"></label>
+<label>Прицел:
+<input type="text" id="initialaimcolor" name="initialaimcolor" value="#FFF" size="8" data-jscolor="{}" onchange="previewText()">
+<input type="checkbox" checked="true" name="initialaim" id="initialaim" onclick="previewText()"></label>
+<div>
+<a href="javascript:()" style="background: #fff;width:48%;margin:1%;float: left" title="Сохранить настройки в Cookies" class="gButton">Сохранить настройки</a>
+<a href="javascript:ShowSettings()" style="width:48%;margin:1%;float: right;" title="Записать в файл Settings.txt" class="gButton">Показать настройки</a>
+<a id="FullScreen" href="javascript:fullScreen()" style="background: #ffdf60;width:48%;margin:1%;float: left" class="gButton">Развернуть</a>
+<a href="javascript:submitScript()" style="background: #73ff5a;width:48%;margin:1%;float: right;" class="gButton">Старт</a>
+</div>
+<div id="preview" style="display: block; text-transform: none; font-size: 120px; padding-bottom: 25;text-align: center;margin: 10px;">Текст суфлера</div>
+</fieldset>
+<div id="" style="display: block; text-transform: none; font-size: 30px; text-align: center; ">
+<br>
+	<a href="https://kingview.ru/" style="text-decoration: none;text-shadow: 1px 1px 2px black, 0 0 1em black;">KingView - профессиональные телесуфлеры по доступной цене</a>
+<br><br>
+</div>
+
+</div>
+
+<div id="ProgMessage">
+</div>
+
+<div id="reference" style="visibility: hidden; font-size: 120px; text-align: right; display: none;">Подождите...</div>
+
+<div class="prompter" id="prompter" style="font-size: 120px; display: block; text-transform: none; text-align: center; visibility: visible; color: rgb(255, 255, 255);"></div>
+
+</div>
+<div id="controller" style="display: none;">
+<table cellspacing="5"><tbody><tr class="tablehead">
+<td colspan="4">Воспроизведение</td>
+<td colspan="3">Скорость</td>
+<td colspan="3">Шрифт</td>
+
+</tr><tr>
+<td>
+<a href="javascript:Controller.toggle()" title="Старт - [Esc]" class="gButton" id="play">►</a>
+</td><td>
+<a href="javascript:void(0)" onmousedown="javascript:Controller.rollBack(true)" onmouseup="javascript:Controller.rollBack(false)" title="Назад - [Стрелка вверх]" class="gButton">◄◄</a>
+</td><td>
+<a href="javascript:void(0)" onmousedown="javascript:Controller.rollFwd(true)" onmouseup="javascript:Controller.rollFwd(false)" title="Вперед - [Стрелка вниз]" class="gButton">►►</a>
+</td><td>
+<a href="javascript:Controller.reset()" title="Стоп" class="gButton">■</a>
+</td><td>
+<a href="javascript:Controller.speedDown()" title="Замедлить - [Стрелка влево / Колесико вниз]" class="gButton">-</a>
+</td><td>
+<label class="counter" id="currentspeed">2</label>
+</td><td>
+<a href="javascript:Controller.speedUp()" title="Ускорить - [Стрелка вправо / Колесико вверх]" class="gButton">+</a>
+</td><td>
+<a href="javascript:void(0)" onmousedown="javascript:Controller.fontDown()" onmouseup="javascript:Controller.fontstop()" class="gButton">▼</a>
+</td><td>
+<label class="counter" id="currentfont">NaN</label>
+</td><td>
+<a href="javascript:void(0)" onmousedown="javascript:Controller.fontUp()" onmouseup="javascript:Controller.fontstop()" class="gButton">▲</a>
+</td><td>
+<a href="javascript:openController()" class="gButton" style="font-size:16px;
+">Оператор</a>
+</td><td>
+
+<a href="javascript:document.getElementById('initialspeed').value=Controller.actualspeed;
+document.getElementById('initialfont').value=parseInt(document.getElementById('prompter').style.fontSize);
+Controller.reset();
+submitScript(1);
+" title="Edit Script" class="gButton" style="font-size:16px;
+">Редактировать</a>
+
+</td>
+</tr></tbody></table>
+<div id="console"></div>
+
+</div>
+<script type="text/javascript">
+
+	var ball = document.getElementById('arrow');
+	var ball2 = document.getElementById('aim');
+	var ball3 = document.getElementById('aim-v');
+
+	document.getElementById("initialfont").value=FONT;
+	document.getElementById("initialspeed").value=SPEED;
+	document.getElementById("initialcolor").value=Text_Color;
+	document.getElementById("initialfields").value=Fields;
+	document.getElementById("initialflip").checked=MIRROR_TEXT;
+	document.getElementById("initialcap").checked=CAPITAL_LETTERS;
+	document.getElementById("initialbreak").checked=WORD_WRAP;
+	document.getElementById("initialpanel").checked=Show_Panel;
+	document.getElementById("initialoper").checked=Auto_Oper;
+	document.getElementById("initialfontoper").value=FONT_Oper;
+	document.getElementById("initialtupdate").value=T_Oper;
+	document.getElementById("initialmouse").checked=Mouse;	
+	document.getElementById("initialscroll").checked=WheelMove;
+	document.getElementById("initialarrow").value=Arrow_Top;
+	document.getElementById("initialarrowleft").value=Arrow_Left;
+	document.getElementById("initialtriangle").checked=Triangle;
+	document.getElementById("initialtrianglecolor").value=Triangle_Color;
+	document.getElementById("initialaim").checked=Aim;
+	document.getElementById("initialaimcolor").value=Aim_Color;
+	document.getElementById("arrow").style.top=Arrow_Top;
+	document.getElementById("aim").style.top=Arrow_Top+56;
+	document.getElementById("aim-v").style.left=Arrow_Left;
+	
+	document.getElementById("prompter").style.color=Text_Color;
+	
+	Controller.init();
+
+	previewText();
+	
+ball.onmousedown = ball_moveY;
+ball2.onmousedown = ball_moveY;
+ball3.onmousedown = ball_moveX;
+
+function ball_moveX(e) { // 1. отследить нажатие
+
+  // подготовить к перемещению
+  // 2. разместить на том же месте, но в абсолютных координатах
+  ball3.style.position = 'absolute';
+  moveAt(e);
+  // переместим в body, чтобы мяч был точно не внутри position:relative
+  document.body.appendChild(ball3);
+
+  ball3.style.zIndex = 999; // показывать мяч над другими элементами
+
+  // передвинуть мяч под координаты курсора
+  // и сдвинуть на половину ширины/высоты для центрирования
+  function moveAt(e) {
+    ball3.style.left = e.pageX - ball3.offsetWidth / 2 + 'px';
+	document.getElementById("initialarrowleft").value=parseInt(ball3.style.left);
+  }
+
+  // 3, перемещать по экрану
+  document.onmousemove = function(e) {
+    moveAt(e);
+  }
+
+  // 4. отследить окончание переноса
+  document.onmouseup = function() {
+    document.onmousemove = null;
+    ball3.onmouseup = null;
+  }
+}
+
+function ball_moveY(e) { // 1. отследить нажатие
+
+  // подготовить к перемещению
+  // 2. разместить на том же месте, но в абсолютных координатах
+  ball.style.position = 'absolute';
+  ball2.style.position = 'absolute';
+  moveAt(e);
+  // переместим в body, чтобы мяч был точно не внутри position:relative
+  document.body.appendChild(ball);
+  document.body.appendChild(ball2);
+
+  ball.style.zIndex = 1000; // показывать мяч над другими элементами
+  ball2.style.zIndex = 999; // показывать мяч над другими элементами
+
+  // передвинуть мяч под координаты курсора
+  // и сдвинуть на половину ширины/высоты для центрирования
+  function moveAt(e) {
+    //ball.style.left = e.pageX - ball.offsetWidth / 2 + 'px';
+    ball.style.top = e.pageY - ball.offsetHeight / 2 + 'px';
+	ball2.style.top = e.pageY - ball2.offsetHeight / 2 + 'px';
+	if (ball.style.display=="block"){
+		document.getElementById("initialarrow").value=parseInt(ball.style.top);
+	}
+	else{
+		document.getElementById("initialarrow").value=parseInt(ball2.style.top)-55;
+	}
+  }
+
+  // 3, перемещать по экрану
+  document.onmousemove = function(e) {
+    moveAt(e);
+  }
+
+  // 4. отследить окончание переноса
+  document.onmouseup = function() {
+    document.onmousemove = null;
+    ball.onmouseup = null;
+  }
+}
+	
+function replaceSelectedText(elem, str){
+
+  elem.focus();
+
+
+  if (document.selection){
+
+    var s = document.selection.createRange();
+ 
+    if (s.text){
+
+      eval("s.text="+str+"(s.text);");
+
+      s.select();
+
+      return true;
+
+    }
+
+  }
+
+  else if (typeof(elem.selectionStart) == "number"){
+
+    if (elem.selectionStart!=elem.selectionEnd){
+
+      var start = elem.selectionStart;
+
+      var end = elem.selectionEnd;
+
+
+      eval("var rs = "+str+"(elem.value.substr(start,end-start));");
+
+      elem.value = elem.value.substr(0,start)+rs+elem.value.substr(end);
+
+      elem.setSelectionRange(end,end);
+
+    }
+
+    return true;
+
+  }
+
+  return false;
+
+}
+
+
+//оборачиваем текст в нужные теги и т.д.
+function change_str(s){
+return "[hl]"+s+"[/hl]"}
+
+function frame_convert(s){
+	return s.body.innerHTML.replace(/\<\/pre\>/g,"").replace(/\<pre\>/g,"").replace(/\<pre style=\"word-wrap: break-word; white-space: pre-wrap;\"\>/g,"");
+}
+
+function ShowScriptN(){
+	ShowMessageT(scenArr[scenN-1].slice(0,60));
+}
+
+function ShowMessageT(s){
+	ProgMessageCount++;
+	document.getElementById("ProgMessage").innerHTML=s.replace("\n","<br>");
+	document.getElementById("ProgMessage").style.display="block";
+	setTimeout(() => {ProgMessageCount--;if(ProgMessageCount==0){document.getElementById("ProgMessage").style.display="none"}},3000);
+}
+
+function ShowSettings(){
+	let tempSet="a";
+	tempSet="/*Записать в файл Settings.txt*/\r\n/*Параметры программы*/\r\n";
+	tempSet+="FONT="+document.getElementById("initialfont").value+";  /*размер шрифта*/\r\n";
+	tempSet+="SPEED="+document.getElementById("initialspeed").value+";  /*скорость текста*/\r\n";
+	tempSet+="Text_Color=\""+document.getElementById("initialcolor").value+"\";  /*цвет текста в формате RGB*/\r\n";
+	tempSet+="Fields="+document.getElementById("initialfields").value+";  /*размер отступов по бокам*/\r\n";
+	tempSet+="MIRROR_TEXT="+(document.getElementById("initialflip").checked?"1":"0")+";  /*зеркальный текст*/\r\n";
+	tempSet+="CAPITAL_LETTERS="+(document.getElementById("initialcap").checked?"1":"0")+";  /*заглавные или прописные буквы*/\r\n";
+	tempSet+="WORD_WRAP="+(document.getElementById("initialbreak").checked?"1":"0")+";  /*перенос каждого слова*/\r\n";
+	tempSet+="Show_Panel="+(document.getElementById("initialpanel").checked?"1":"0")+";  /*отображение панели управления*/\r\n";
+	tempSet+="Auto_Oper="+(document.getElementById("initialoper").checked?"1":"0")+";  /*автоматическое открытие экрана оператора*/\r\n";
+	tempSet+="FONT_Oper="+document.getElementById("initialfontoper").value+";  /*размер шрифта экрана оператора*/\r\n";
+	tempSet+="T_Oper="+document.getElementById("initialtupdate").value+";  /*период обновления текста экрана оператора*/\r\n";
+	tempSet+="Mouse="+(document.getElementById("initialmouse").checked?"1":"0")+";  /*отображение курсора мыши*/\r\n";
+	tempSet+="WheelMove="+(document.getElementById("initialscroll").checked?"1":"0")+";  /*перемотка текста колесиком мыши*/\r\n";
+	tempSet+="Arrow_Top="+document.getElementById("initialarrow").value+";  /*высота указателя объектива*/\r\n";
+	tempSet+="Arrow_Left="+document.getElementById("initialarrowleft").value+";  /*сдвиг указателя объектива*/\r\n";
+	tempSet+="Triangle="+(document.getElementById("initialtriangle").checked?"1":"0")+";  /*отображение треугольника*/\r\n";
+	tempSet+="Triangle_Color=\""+document.getElementById("initialtrianglecolor").value+"\";  /*цвет треугольника в формате RGB*/\r\n";
+	tempSet+="Aim="+(document.getElementById("initialaim").checked?"1":"0")+";  /*отображение прицела*/\r\n";
+	tempSet+="Aim_Color=\""+document.getElementById("initialaimcolor").value+"\";  /*цвет прицела в формате RGB*/\r\n";
+	tempSet+="DoubleStop=0;  /*сброс текста при двойном нажатии на верхнюю кнопку пульта*/\r\n"
+	
+	prompt("Настройки Settings.txt",tempSet);	
+}
+
+function LocReloadStart(){
+	if ((PgUpPressed==1)&&(PgDwnPressed==1)){
+		LocReloadTimer=setTimeout(() => {location.reload()},5000);
+	}
+}
+
+function WebSockStart(){
+	clearInterval(WebSockTimer);
+	socket = new WebSocket("ws://"+"127.0.0.1"+":" + SocketPort);
+	socket.onopen = connectionOpen;
+	socket.onmessage = messageReceived;
+	socket.onclose = onClose;
+}
+
+function WebSockStop(){
+	socket.close();
+	onClose();
+}
+
+function connectionOpen() {
+	BaseSend();
+	socket.send("TEXT="+document.getElementById("promptinput").value);
+	WebSockTimer = setInterval(() => {WebMessages()},document.getElementById("initialtupdate").value);
+}
+
+function BaseWebString(){
+	return "fields="+parseInt(document.getElementById("prompter").style.paddingLeft)+";"+"font="+parseInt(document.getElementById("prompter").style.fontSize)+";"+"scrollHeight="+document.getElementById("container").scrollHeight+";"+"clientWidth="+document.getElementById("container").clientWidth+";"+"innerWidth="+window.innerWidth+";"+"clientHeight="+document.getElementById("container").clientHeight+";"+"initialtupdate="+document.getElementById("initialtupdate").value+";"+"initialfontoper="+document.getElementById("initialfontoper").value;
+}
+
+function BaseSend(){
+	lastWebBase=BaseWebString();
+	socket.send(lastWebBase);
+}
+
+function WebMessages() {
+	let temptop=parseFloat(lastTop);
+	let tempbase=BaseWebString();
+	if ((lastWebSpeed!=Controller.actualspeed)||(lastWebTop!=temptop)||(lastpromptState!=promptState)){
+		lastWebSpeed=Controller.actualspeed;
+		lastpromptState=promptState;
+		lastWebTop=temptop;
+		socket.send("speed="+Controller.actualspeed+";"+"scrollTop="+temptop+";"+"promptState="+promptState);
+	}
+	
+	if (lastWebBase!=tempbase){
+		BaseSend();
+	}
+}
+
+function onClose() {
+	clearInterval(WebSockTimer);
+}
+
+function messageReceived(e) {
+	let sockCom=e.data.split("=");
+	switch(sockCom[0]){
+		case "scrollTop":
+			if (promptState==0){
+				lastTop=parseFloat(sockCom[1]);
+				document.getElementById("container").scrollTop=lastTop;
+			}
+		break;
+		case "speed":
+			Controller.actualspeed=parseInt(sockCom[1]);
+			$("currentspeed").innerHTML=Math.abs(Controller.actualspeed);
+		break;
+		case "font":
+			fsize=parseInt(sockCom[1]);
+			$("prompter").style.fontSize=fsize+"px";
+			$("currentfont").innerHTML=Math.abs(fsize);
+		break;
+		case "message":
+			ShowMessageT(sockCom[1]);
+		break;
+		case "toggle":
+			Controller.toggle();
+		break;
+		case "reverse":
+			Reverse();
+		break;
+		case "stop":
+			Controller.reset();
+		break;
+		case "refresh":
+			location.reload();
+		break;
+		default:
+	}
+	
+}
+
+// по клику на кнопку, выделенный текст будет заменен на текст с тегами
+document.getElementById('replace').onclick = function() {
+
+  replaceSelectedText(document.getElementById('promptinput'), 'change_str');
+
+}
+
+document.getElementById("prompter").addEventListener("mousedown", function(e) {
+  if(e.which==1){window.Controller.toggle();e.preventDefault();}
+  if(e.which==2){window.Controller.reset();e.preventDefault();}
+});
+document.getElementById("promptinput").value="Вставьте текст в данное поле.";
+window.onload = function() {
+	try {scenN=-1;scen = frame_convert(document.getElementById('myhtml').contentWindow.document);}catch (e) {scenN=0}
+	document.getElementById("promptinput").value=scen;
+	if (document.getElementById("promptinput").value!="Вставьте текст в данное поле."){
+		submitScript();
+		scenN=-1;
+	}
+	try {scenNTemp=scenN;if (scenN==0){scenN=1};scenArr[0] = "Сценарий 1\n"+frame_convert(document.getElementById('myhtml1').contentWindow.document);if (scenNTemp==0) document.getElementById("promptinput").value=scenArr[0];}catch (e) {scenN=scenNTemp;}
+	try {scenNTemp=scenN;if (scenN==0){scenN=2};scenArr[1] = "Сценарий 2\n"+frame_convert(document.getElementById('myhtml2').contentWindow.document);if (scenNTemp==0) document.getElementById("promptinput").value=scenArr[1];}catch (e) {scenN=scenNTemp;}
+	try {scenNTemp=scenN;if (scenN==0){scenN=3};scenArr[2] = "Сценарий 3\n"+frame_convert(document.getElementById('myhtml3').contentWindow.document);if (scenNTemp==0) document.getElementById("promptinput").value=scenArr[2];}catch (e) {scenN=scenNTemp;}
+	try {scenNTemp=scenN;if (scenN==0){scenN=4};scenArr[3] = "Сценарий 4\n"+frame_convert(document.getElementById('myhtml4').contentWindow.document);if (scenNTemp==0) document.getElementById("promptinput").value=scenArr[3];}catch (e) {scenN=scenNTemp;}
+	try {scenNTemp=scenN;if (scenN==0){scenN=5};scenArr[4] = "Сценарий 5\n"+frame_convert(document.getElementById('myhtml5').contentWindow.document);if (scenNTemp==0) document.getElementById("promptinput").value=scenArr[4];}catch (e) {scenN=scenNTemp;}
+	try {scenNTemp=scenN;if (scenN==0){scenN=6};scenArr[5] = "Сценарий 6\n"+frame_convert(document.getElementById('myhtml6').contentWindow.document);if (scenNTemp==0) document.getElementById("promptinput").value=scenArr[5];}catch (e) {scenN=scenNTemp;}
+	try {scenNTemp=scenN;if (scenN==0){scenN=7};scenArr[6] = "Сценарий 7\n"+frame_convert(document.getElementById('myhtml7').contentWindow.document);if (scenNTemp==0) document.getElementById("promptinput").value=scenArr[6];}catch (e) {scenN=scenNTemp;}
+	try {scenNTemp=scenN;if (scenN==0){scenN=8};scenArr[7] = "Сценарий 8\n"+frame_convert(document.getElementById('myhtml8').contentWindow.document);if (scenNTemp==0) document.getElementById("promptinput").value=scenArr[7];}catch (e) {scenN=scenNTemp;}
+	try {scenNTemp=scenN;if (scenN==0){scenN=9};scenArr[8] = "Сценарий 9\n"+frame_convert(document.getElementById('myhtml9').contentWindow.document);if (scenNTemp==0) document.getElementById("promptinput").value=scenArr[8];}catch (e) {scenN=scenNTemp;}
+	try {scenNTemp=scenN;if (scenN==0){scenN=10};scenArr[9] = "Сценарий 10\n"+frame_convert(document.getElementById('myhtml10').contentWindow.document);if (scenNTemp==0) document.getElementById("promptinput").value=scenArr[9];}catch (e) {scenN=scenNTemp;}
+	
+	if (scenN>0) ShowScriptN();
+};
+</script>
+
+</body></html>
